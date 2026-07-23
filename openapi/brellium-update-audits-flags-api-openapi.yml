@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits Update Audits Flags API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Update Audits Flags
+paths:
+  /update-audits-flags:
+    post:
+      summary: Update flags for a list of audits
+      requestBody:
+        description: 'Either provide a list of audit IDs to update [''audit_id1'', ''audit_id2''] or a filter to update all audits that match the filter {''session_id'' : ''session_id_value''}.'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                audit_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of audit IDs to update e.g. ['audit_id1', 'audit_id2'].
+                filter:
+                  type: object
+                  description: 'Filter criteria for selecting audits to update e.g. {''session_id'' : ''session_id_value''}.'
+                flags:
+                  type: array
+                  items:
+                    type: string
+                  description: List of flags to set on the audits e.g. ['flag1', 'flag2'].
+              required:
+              - flags
+      responses:
+        '200':
+          description: Audits updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  updated_audit_ids:
+                    type: array
+                    items:
+                      type: string
+      security:
+      - bearerAuth: []
+      tags:
+      - Update Audits Flags
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits Question Sets API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Question Sets
+paths:
+  /question-sets:
+    get:
+      summary: List question sets
+      responses:
+        '200':
+          description: List of question sets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuestionSet'
+      security:
+      - bearerAuth: []
+      tags:
+      - Question Sets
+components:
+  schemas:
+    QuestionSet:
+      type: object
+      properties:
+        set_id:
+          type: string
+          description: Question set id.
+        name:
+          type: string
+          description: Name of set.
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              question_id:
+                type: string
+                description: Question id.
+              query:
+                type: string
+                description: The query to be ran on the document.
+              question_type:
+                type: string
+                description: 'The type of question: default question determine chart quality and affect the audit score, informational questions provide clinical context but do not affect the audit score.'
+              severity:
+                type: string
+                description: 'Low, normal, high questions determine how heavily the question is weighted in the audit score: critical questions will cause the audit to fail if answered negatively; points penalty questions will cause the specified number of points to be deducted from the audit score; none questions do not affect the audit score.'
+              remediation:
+                type: string
+                description: The remediation for the question.
+              affirmation:
+                type: string
+                description: The affirmation for the question.
+            required:
+            - question_id
+            - query
+          description: The questions in the set.
+      required:
+      - set_id
+      - questions
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

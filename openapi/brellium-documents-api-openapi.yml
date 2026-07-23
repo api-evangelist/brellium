@@ -1,0 +1,164 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits Documents API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Documents
+paths:
+  /documents:
+    post:
+      summary: Upload a document
+      requestBody:
+        description: Document to upload.
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: 'PDF, JSON, YML, CSV, or TXT file. Maximum file size: 10 MB.'
+                metadata:
+                  type: object
+                  description: Optional metadata object.
+                  additionalProperties: true
+              required:
+              - file
+      responses:
+        '201':
+          description: Document created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadDocumentResponse'
+      security:
+      - bearerAuth: []
+      tags:
+      - Documents
+  /documents/upload-url:
+    post:
+      summary: Get a presigned URL to upload a large document
+      requestBody:
+        description: Document to upload.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadUrlRequest'
+      responses:
+        '201':
+          description: Upload URL created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadUrlResponse'
+      security:
+      - bearerAuth: []
+      tags:
+      - Documents
+  /documents/{document_id}:
+    get:
+      summary: Get information about a specific document
+      parameters:
+      - name: document_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: Document id.
+      responses:
+        '200':
+          description: Document information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+      security:
+      - bearerAuth: []
+      tags:
+      - Documents
+components:
+  schemas:
+    UploadUrlResponse:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: ID of the uploaded document.
+        presigned_url:
+          type: string
+          description: Short-lived URL to upload the file to.
+      required:
+      - document_id
+      - presigned_url
+    UploadDocumentResponse:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Document id of uploaded document.
+      required:
+      - document_id
+    UploadUrlRequest:
+      type: object
+      properties:
+        filename:
+          type: string
+          description: Name of the file to upload.
+        doc_type:
+          type: string
+          description: Optional document type.
+        metadata:
+          type: object
+          description: Optional metadata object.
+          additionalProperties: true
+      required:
+      - filename
+    Document:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Document id.
+        org_id:
+          type: string
+          description: Organization id.
+        filename:
+          type: string
+          description: Document filename.
+        status:
+          type: string
+          enum:
+          - todo
+          - in_progress
+          - error
+          - complete
+          description: Processing status of the document.
+        handler:
+          type: string
+          description: Handler used for the document.
+        audit_created:
+          type: boolean
+          description: Flag indicating whether an audit has been created for the document.
+        needs_audit:
+          type: boolean
+          description: Flag indicating whether the document requires an audit (set by handler).
+        external_metadata:
+          type: object
+          additionalProperties: true
+          description: JSON metadata associated with the document.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

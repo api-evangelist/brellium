@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits Auth API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Auth
+paths:
+  /auth:
+    post:
+      summary: Authenticate user
+      requestBody:
+        description: Credentials.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Authenticate'
+      responses:
+        '200':
+          description: A bearer token is returned that can be used for authenticated API requests.
+          content:
+            application/json:
+              schema:
+                description: Bearer token.
+                type: object
+                items:
+                  $ref: '#/components/schemas/Authenticate'
+      tags:
+      - Auth
+components:
+  schemas:
+    Authenticate:
+      type: object
+      properties:
+        client_id:
+          type: string
+          description: Client ID.
+        client_secret:
+          type: string
+          description: Client secret.
+          format: password
+        responses:
+          type: object
+          properties:
+            access_token:
+              type: string
+              description: Bearer token used for API access.
+          required:
+          - access_token
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits Documents Multiple API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Documents Multiple
+paths:
+  /documents-multiple:
+    post:
+      summary: Upload multiple documents for the same audit
+      requestBody:
+        description: Documents to upload.
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: 'PDF, JSON, YML, or TXT files. Maximum individual file size: 10 MB.'
+                metadata:
+                  type: object
+                  description: Optional metadata object.
+                  additionalProperties: true
+              required:
+              - files
+      responses:
+        '201':
+          description: Documents created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadMultipleDocumentsResponse'
+      security:
+      - bearerAuth: []
+      tags:
+      - Documents Multiple
+components:
+  schemas:
+    UploadMultipleDocumentsResponse:
+      type: object
+      properties:
+        document_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of uploaded documents.
+      required:
+      - document_ids
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

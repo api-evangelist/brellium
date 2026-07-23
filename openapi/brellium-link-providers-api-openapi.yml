@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits Link Providers API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Link Providers
+paths:
+  /link-providers:
+    post:
+      summary: Link providers to their email using a CSV upload
+      requestBody:
+        description: 'CSV file containing people data. The CSV must have the following headers: ''first_name'', ''last_name'', ''email''.'
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Upload a single CSV file.
+              required:
+              - file
+      responses:
+        '200':
+          description: Result of provider linking operation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProviderLinkingResult'
+      security:
+      - bearerAuth: []
+      tags:
+      - Link Providers
+components:
+  schemas:
+    ProviderLinkingResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - created
+          - updated
+          - skipped
+        name:
+          type: string
+        email:
+          type: string
+        reason:
+          type: string
+      required:
+      - status
+      - name
+      - email
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

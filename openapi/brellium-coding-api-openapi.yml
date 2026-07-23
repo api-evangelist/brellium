@@ -1,0 +1,810 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits Coding API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Coding
+paths:
+  /coding:
+    post:
+      summary: List coding evaluations based on filter criteria
+      requestBody:
+        description: Filter to retrieve coding evaluations with.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CodingEvalFilter'
+      responses:
+        '200':
+          description: List of coding evaluations. The structure of the returned coding evaluations depends on the 'verbose', 'includeDisplayInfo', 'includePeople', and 'includeQuestionIds' flags in the request. If 'verbose' is true, full coding evaluation details are returned (Coding Evaluation schema). If 'verbose' is false, a reduced coding evaluation object is returned (CodingEvaluationInfo schema). If 'includeDisplayInfo' and 'includePeople' are true, the returned audits will include display info and people respectively. If 'includeQuestionIds' is true, the returned additional criteria responses will include question ids. Both 'verbose' and the other flags can be used together.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - description: Array of full coding evaluations with display info, people, and additional criteria responses.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CodingEvalWithDisplayInfoPeopleResponses'
+                - description: Array of full coding evaluations.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CodingEval'
+                - description: Array of reduced coding evaluation objects.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CodingEvalInfo'
+      security:
+      - bearerAuth: []
+      tags:
+      - Coding
+  /coding/{coding_eval_id}:
+    get:
+      summary: Get information about a specific coding evaluation
+      parameters:
+      - name: coding_eval_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: Coding evaluation id.
+      - name: includeDisplayInfo
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include display info in the response.
+      - name: includePeople
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include people information in the response.
+      - name: includeResponses
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include additional criteria responses in the response.
+      - name: includeQuestionIds
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include question ids in the response.
+      responses:
+        '200':
+          description: Coding evaluation information, optionally including display info, people, and additional criteria responses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodingEvalWithDisplayInfoPeopleResponses'
+      security:
+      - bearerAuth: []
+      tags:
+      - Coding
+components:
+  schemas:
+    CodingEvalFilter:
+      type: object
+      properties:
+        verbose:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Controls the level of detail in the response.
+          nullable: true
+        status:
+          type: array
+          items:
+            type: string
+            enum:
+            - todo
+            - processing
+            - in_progress
+            - error
+            - awaiting_audit
+            - complete
+          description: Audit statuses to include.
+          nullable: true
+        documents:
+          type: array
+          items:
+            type: string
+          description: Document ids that the audits were made for.
+          nullable: true
+        sessionStartDate:
+          type: string
+          format: date-time
+          description: Start date of the session in ISO format.
+          nullable: true
+        sessionEndDate:
+          type: string
+          format: date-time
+          description: End date of the session in ISO format.
+          nullable: true
+        evalStartDate:
+          type: string
+          format: date-time
+          description: Start date of the audit in ISO format.
+          nullable: true
+        evalEndDate:
+          type: string
+          format: date-time
+          description: End date of the audit in ISO format.
+          nullable: true
+        emScoreLowerBound:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Lower bound for the E/M evaluation score.
+          nullable: true
+        emScoreUpperBound:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Upper bound for the E/M evaluation score.
+          nullable: true
+        cptCodes:
+          type: array
+          items:
+            type: string
+          description: Submitted CPT codes.
+          nullable: true
+        recommendedCptCodes:
+          type: array
+          items:
+            type: string
+          description: Recommended CPT codes.
+          nullable: true
+        problemsLevel:
+          type: string
+          enum:
+          - straightforward
+          - low
+          - moderate
+          - high
+          description: Problems level.
+          nullable: true
+        dataLevel:
+          type: string
+          enum:
+          - straightforward
+          - low
+          - moderate
+          - high
+          description: Data level.
+          nullable: true
+        riskLevel:
+          type: string
+          enum:
+          - straightforward
+          - low
+          - moderate
+          - high
+          description: Risk level.
+          nullable: true
+        mdmLevel:
+          type: string
+          enum:
+          - straightforward
+          - low
+          - moderate
+          - high
+          description: Level of medical decision making.
+          nullable: true
+        timeBased:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Whether the E/M code recommendation is time-based.
+          nullable: true
+        baseCodeAligned:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Whether the base E/M code recommendation is aligned with the submitted base code.
+          nullable: true
+        addOnCodesAligned:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Whether the add-on codes recommendation is aligned with submitted add-on codes.
+          nullable: true
+        upcoded:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Whether upcoding was detected.
+          nullable: true
+        downcoded:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Whether downcoding was detected.
+          nullable: true
+        icdScoreLowerBound:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Lower bound for the ICD evaluation score.
+          nullable: true
+        icdScoreUpperBound:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Upper bound for the ICD evaluation score.
+          nullable: true
+        icdCodes:
+          type: array
+          items:
+            type: string
+          description: Array of ICD codes.
+          nullable: true
+        hccCodes:
+          type: array
+          items:
+            type: string
+          description: Array of HCC codes.
+          nullable: true
+        lastUpdatedStartDate:
+          type: string
+          format: date-time
+          description: Start date of the coding evaluation's latest update in ISO format.
+          nullable: true
+        lastUpdatedEndDate:
+          type: string
+          format: date-time
+          description: End date of the coding evaluation's latest update in ISO format.
+          nullable: true
+        page:
+          type: integer
+          minimum: 1
+          description: Page number.
+          nullable: true
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          description: Number of audits per page.
+          nullable: true
+        includeDisplayInfo:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Include display info.
+          nullable: true
+        includePeople:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Include people.
+          nullable: true
+        includeQuestionIds:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Include question ids in the response.
+          nullable: true
+    CodingEvalWithDisplayInfoPeopleResponses:
+      type: object
+      properties:
+        coding_eval_id:
+          type: string
+        status:
+          type: string
+        reviewed_by:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        em_eval:
+          oneOf:
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              score:
+                type: number
+                format: float
+              flags:
+                type: array
+                items:
+                  type: string
+              base_code_aligned:
+                type: boolean
+              add_on_codes_aligned:
+                type: boolean
+              problems_level:
+                type: string
+              data_level:
+                type: string
+              risk_level:
+                type: string
+              mdm_level:
+                type: string
+              time_based:
+                type: boolean
+              encounter_time_minutes:
+                type: integer
+              upcoded:
+                type: boolean
+              downcoded:
+                type: boolean
+              submitted_base_code:
+                type: string
+              submitted_add_on_codes:
+                type: array
+                items:
+                  type: string
+              recommended_base_code:
+                type: string
+              recommended_add_on_codes:
+                type: array
+                items:
+                  type: string
+              problems:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    problem_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+              risk:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    risk_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+            title: Codable
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              coding_status:
+                type: string
+                enum:
+                - uncodable
+                description: Present only when coding module is unable to code the chart. Absent for normally coded charts.
+              uncodable_reason:
+                type: string
+                enum:
+                - no_problem_identified
+                - visit_type_indeterminate
+                description: Only present when coding_status is 'uncodable'. 'no_problem_identified' = documentation lacks at least one addressable medical problem required to meet minimum code requirements. 'visit_type_indeterminate' = documentation doesn't indicate whether the patient is new or established, so a code series cannot be selected.
+              encounter_time_minutes:
+                type: integer
+              flags:
+                type: array
+                items:
+                  type: string
+            title: Uncodable
+        icd_eval:
+          type: object
+          properties:
+            icd_eval_id:
+              type: string
+            score:
+              type: number
+              format: float
+            flags:
+              type: array
+              items:
+                type: string
+            icd_codes:
+              type: array
+              items:
+                type: object
+                properties:
+                  icd_code:
+                    type: string
+                  hcc_code:
+                    type: string
+                  hcc_model_name:
+                    type: string
+                  criteria:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        icd_criteria_id:
+                          type: string
+                        criteria_name:
+                          type: string
+                        criteria_context:
+                          type: string
+                        is_criteria_met:
+                          type: boolean
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              question_id:
+                type: string
+              response_id:
+                type: string
+              query:
+                type: string
+              answer:
+                type: string
+              context:
+                type: string
+            required:
+            - query
+            - answer
+            - context
+        display_info:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              order:
+                type: string
+              title:
+                type: string
+              value:
+                type: string
+              format:
+                type: string
+              filter_type:
+                type: string
+            required:
+            - key
+            - order
+            - title
+            - value
+            - format
+            - filter_type
+        people:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              order:
+                type: string
+              title:
+                type: string
+              value:
+                type: string
+              format:
+                type: string
+              filter_type:
+                type: string
+            required:
+            - key
+            - order
+            - title
+            - value
+            - format
+            - filter_type
+        documents:
+          type: array
+          items:
+            type: string
+        people_emails:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              name:
+                type: string
+              email:
+                type: string
+    CodingEval:
+      type: object
+      properties:
+        coding_eval_id:
+          type: string
+        status:
+          type: string
+        reviewed_by:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        em_eval:
+          oneOf:
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              score:
+                type: number
+                format: float
+              flags:
+                type: array
+                items:
+                  type: string
+              base_code_aligned:
+                type: boolean
+              add_on_codes_aligned:
+                type: boolean
+              problems_level:
+                type: string
+              data_level:
+                type: string
+              risk_level:
+                type: string
+              mdm_level:
+                type: string
+              time_based:
+                type: boolean
+              encounter_time_minutes:
+                type: integer
+              upcoded:
+                type: boolean
+              downcoded:
+                type: boolean
+              submitted_base_code:
+                type: string
+              submitted_add_on_codes:
+                type: array
+                items:
+                  type: string
+              recommended_base_code:
+                type: string
+              recommended_add_on_codes:
+                type: array
+                items:
+                  type: string
+              problems:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    problem_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+              risk:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    risk_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+            title: Codable
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              coding_status:
+                type: string
+                enum:
+                - uncodable
+                description: Present only when coding module is unable to code the chart. Absent for normally coded charts.
+              uncodable_reason:
+                type: string
+                enum:
+                - no_problem_identified
+                - visit_type_indeterminate
+                description: Only present when coding_status is 'uncodable'. 'no_problem_identified' = documentation lacks at least one addressable medical problem required to meet minimum code requirements. 'visit_type_indeterminate' = documentation doesn't indicate whether the patient is new or established, so a code series cannot be selected.
+              encounter_time_minutes:
+                type: integer
+              flags:
+                type: array
+                items:
+                  type: string
+            title: Uncodable
+        icd_eval:
+          type: object
+          properties:
+            icd_eval_id:
+              type: string
+            score:
+              type: number
+              format: float
+            flags:
+              type: array
+              items:
+                type: string
+            icd_codes:
+              type: array
+              items:
+                type: object
+                properties:
+                  icd_code:
+                    type: string
+                  hcc_code:
+                    type: string
+                  hcc_model_name:
+                    type: string
+                  criteria:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        icd_criteria_id:
+                          type: string
+                        criteria_name:
+                          type: string
+                        criteria_context:
+                          type: string
+                        is_criteria_met:
+                          type: boolean
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              response_id:
+                type: string
+              query:
+                type: string
+              answer:
+                type: string
+              context:
+                type: string
+            required:
+            - query
+            - answer
+            - context
+        documents:
+          type: array
+          items:
+            type: string
+    CodingEvalInfo:
+      type: object
+      properties:
+        coding_eval_id:
+          type: string
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        em_eval:
+          oneOf:
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              base_code_aligned:
+                type: boolean
+              add_on_codes_aligned:
+                type: boolean
+              problems_level:
+                type: string
+              data_level:
+                type: string
+              risk_level:
+                type: string
+              mdm_level:
+                type: string
+              time_based:
+                type: boolean
+              encounter_time_minutes:
+                type: integer
+              upcoded:
+                type: boolean
+              downcoded:
+                type: boolean
+              submitted_base_code:
+                type: string
+              submitted_add_on_codes:
+                type: array
+                items:
+                  type: string
+              recommended_base_code:
+                type: string
+              recommended_add_on_codes:
+                type: array
+                items:
+                  type: string
+            title: Codable
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              coding_status:
+                type: string
+                enum:
+                - uncodable
+                description: Present only when coding module is unable to code the chart. Absent for normally coded charts.
+              uncodable_reason:
+                type: string
+                enum:
+                - no_problem_identified
+                - visit_type_indeterminate
+                description: Only present when coding_status is 'uncodable'. 'no_problem_identified' = documentation lacks at least one addressable medical problem required to meet minimum code requirements. 'visit_type_indeterminate' = documentation doesn't indicate whether the patient is new or established, so a code series cannot be selected.
+              encounter_time_minutes:
+                type: integer
+            title: Uncodable
+        icd_eval:
+          type: object
+          properties:
+            icd_eval_id:
+              type: string
+            icd_codes:
+              type: array
+              items:
+                type: object
+                properties:
+                  icd_code:
+                    type: string
+                  hcc_code:
+                    type: string
+                  hcc_model_name:
+                    type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

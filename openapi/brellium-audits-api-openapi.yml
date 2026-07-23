@@ -1,0 +1,473 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brellium Audits API
+  description: API for base Brellium functionality.
+  termsOfService: https://brellium.com/terms
+  contact:
+    name: Brellium Team
+    email: support@brellium.com
+    url: http://brellium.com
+servers:
+- url: https://api.brellium.com/v1
+tags:
+- name: Audits
+paths:
+  /audits:
+    post:
+      summary: List audits based on filter criteria
+      requestBody:
+        description: Filter to retrieve audits with.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuditFilter'
+      responses:
+        '200':
+          description: List of audits. The structure of the returned audits depends on the 'verbose', 'includeDisplayInfo', and 'includePeople' flags in the request. If 'verbose' is true, full audit details are returned (Audit schema). If 'verbose' is false, a reduced audit object is returned (AuditInfo schema). If 'includeDisplayInfo' and 'includePeople' are true, the returned audits will include display info and people respectively. Both 'verbose' and one of the other two flags can be used together.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - description: Array of full audits with display info and/or people.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AuditWithDisplayAndPeople'
+                - description: Array of full audits.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Audit'
+                - description: Array of reduced audit objects.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AuditInfo'
+      security:
+      - bearerAuth: []
+      tags:
+      - Audits
+  /audits/{audit_id}:
+    get:
+      summary: Get information about a specific audit
+      parameters:
+      - name: audit_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: Audit id.
+      - name: includeDisplayInfo
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include display info in the response.
+      - name: includePeople
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include people information in the response.
+      - name: includeQuestionIds
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include question ids in the response.
+      - name: includeLastReviewed
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+        description: Include last reviewed timestamp in the response - N/A if never reviewed.
+      responses:
+        '200':
+          description: Audit information, optionally including responses, display info, and people.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditWithDisplayAndPeople'
+      security:
+      - bearerAuth: []
+      tags:
+      - Audits
+components:
+  schemas:
+    AuditInfo:
+      type: object
+      properties:
+        audit_id:
+          type: string
+          description: Audit id.
+        status:
+          type: string
+          enum:
+          - todo
+          - processing
+          - in_progress
+          - error
+          - complete
+          description: Current status of the audit.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the audit was created.
+    AuditFilter:
+      type: object
+      properties:
+        verbose:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Controls the level of detail in the response.
+          nullable: true
+        status:
+          type: array
+          items:
+            type: string
+            enum:
+            - todo
+            - processing
+            - in_progress
+            - error
+            - complete
+          description: Audit statuses to include.
+          nullable: true
+        set_id:
+          type: string
+          description: Question set id.
+        documents:
+          type: array
+          items:
+            type: string
+          description: Document ids that the audits were made for.
+          nullable: true
+        sessionStartDate:
+          type: string
+          format: date-time
+          description: Start date of the session in ISO format.
+          nullable: true
+        sessionEndDate:
+          type: string
+          format: date-time
+          description: End date of the session in ISO format.
+          nullable: true
+        auditStartDate:
+          type: string
+          format: date-time
+          description: Start date of the audit in ISO format.
+          nullable: true
+        auditEndDate:
+          type: string
+          format: date-time
+          description: End date of the audit in ISO format.
+          nullable: true
+        scoreLowerBound:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Lower bound for the audit score.
+          nullable: true
+        scoreUpperBound:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Upper bound for the audit score.
+          nullable: true
+        lastUpdatedStartDate:
+          type: string
+          format: date-time
+          description: Start date of the audit's latest update in ISO format.
+          nullable: true
+        lastUpdatedEndDate:
+          type: string
+          format: date-time
+          description: End date of the audit's latest update in ISO format.
+          nullable: true
+        page:
+          type: integer
+          minimum: 1
+          description: Page number.
+          nullable: true
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          description: Number of audits per page.
+          nullable: true
+        includeDisplayInfo:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Include display info.
+          nullable: true
+        includePeople:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Include people.
+          nullable: true
+        includeTestAudits:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: If true only test audits are returned, if false or null only non-test audits are returned.
+          nullable: true
+        includeQuestionIds:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Include question ids in the response.
+          nullable: true
+        includeLastReviewed:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          description: Include last reviewed timestamp in the response - N/A if never reviewed.
+          nullable: true
+        flags:
+          type: array
+          items:
+            type: string
+          description: Flags to filter by.
+          nullable: true
+    Audit:
+      type: object
+      properties:
+        audit_id:
+          type: string
+          description: Audit id.
+        status:
+          type: string
+          enum:
+          - todo
+          - in_progress
+          - error
+          - complete
+          description: The status of the audit.
+        score:
+          type: number
+          format: float
+          description: The score of the audit.
+        flags:
+          type: array
+          items:
+            type: string
+          description: The flags on the audit.
+        reviewed_by:
+          type: string
+          description: The email of the reviewer.
+        set_id:
+          type: string
+          description: Id of question set used for the audit.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the audit was created.
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              response_id:
+                type: string
+                description: Response id.
+              query:
+                type: string
+                description: The criteria question.
+              answer:
+                type: string
+                enum:
+                - 'Yes'
+                - N/A
+                - 'No'
+                description: The answer to the question.
+              context:
+                type: string
+                description: The context for the answer.
+            required:
+            - query
+            - answer
+            - context
+          description: The responses the audit is comprised of.
+    AuditWithDisplayAndPeople:
+      type: object
+      properties:
+        audit_id:
+          type: string
+          description: Audit id.
+        status:
+          type: string
+          enum:
+          - todo
+          - in_progress
+          - error
+          - complete
+          description: The status of the audit.
+        score:
+          type: number
+          format: float
+          description: The score of the audit.
+        flags:
+          type: array
+          items:
+            type: string
+          description: The flags on the audit.
+        reviewed_by:
+          type: string
+          description: The email of the reviewer.
+        set_id:
+          type: string
+          description: Id of question set used for the audit.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the audit was created.
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              response_id:
+                type: string
+                description: Response id.
+              query:
+                type: string
+                description: The criteria question.
+              answer:
+                type: string
+                enum:
+                - 'Yes'
+                - N/A
+                - 'No'
+                description: The answer to the question.
+              context:
+                type: string
+                description: The context for the answer.
+            required:
+            - query
+            - answer
+            - context
+          description: The responses the audit is comprised of.
+        display_info:
+          type: array
+          items:
+            type: object
+            description: Additional display information for the audit.
+            properties:
+              key:
+                type: string
+                description: Internal key for the display info item.
+              order:
+                type: integer
+                description: Order in which the item should be displayed.
+              title:
+                type: string
+                description: Title of the display info item.
+              value:
+                type: string
+                description: Value of the display info item.
+              format:
+                type: string
+                description: Format of the value (e.g., 'text').
+              filter_type:
+                type: string
+                description: Type of filter to be applied (e.g., 'search').
+            required:
+            - key
+            - order
+            - title
+            - value
+            - format
+            - filter_type
+            example:
+              key: episode_id
+              order: 1
+              title: Episode ID
+              value: '12341234'
+              format: text
+              filter_type: search
+        people:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Internal key for the display info item.
+              order:
+                type: integer
+                description: Order in which the person should be displayed.
+              title:
+                type: string
+                description: Title or role of the person.
+              value:
+                type: string
+                description: Name or identifier of the person.
+              format:
+                type: string
+                description: Format of the value (e.g., 'text').
+              filter_type:
+                type: string
+                description: Type of filter to be applied (e.g., 'people').
+            required:
+            - key
+            - order
+            - title
+            - value
+            - format
+            - filter_type
+            example:
+              key: RN
+              order: 1
+              title: RN
+              value: John Doe RN
+              format: text
+              filter_type: people
+          description: Information about people associated with the audit.
+        documents:
+          type: array
+          items:
+            type: string
+            description: Document id.
+          description: The documents in the audit.
+        people_emails:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                description: The person's title or role.
+              name:
+                type: string
+                description: The person's name.
+              email:
+                type: string
+                description: The person's email, if found.
+          description: The emails of the people in the audit.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
