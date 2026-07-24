@@ -1,0 +1,35 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.brellium.com/security
+standards:
+- id: soc2-type-2
+  conforms: true
+  evidence: 'Security page: SOC 2 Type II completed with Secureframe and the Johanson Group; reports available on request.'
+- id: soc2-type-1
+  conforms: true
+  evidence: 'Security page: SOC 2 Type I completed.'
+- id: hipaa
+  conforms: true
+  evidence: 'Security page: HIPAA compliant; BAA executed with every customer as standard; annual HIPAA training.'
+- id: oauth2
+  conforms: false
+  evidence: OpenAPI declares http bearer (JWT) via a /auth client-credentials exchange, not an oauth2 securityScheme.
+- id: bearer-jwt
+  conforms: true
+  evidence: openapi securitySchemes bearerAuth type http scheme bearer bearerFormat JWT
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses use a plain JSON { message } envelope, not application/problem+json.
+- id: tls-1.2-plus
+  conforms: true
+  evidence: 'Security page: all API requests over HTTPS/TLS 1.2+; data encrypted at rest with AES-256.'
+compliance_program:
+  published: true
+  url: https://www.brellium.com/security
+  certifications:
+  - SOC 2 Type I
+  - SOC 2 Type II
+  - HIPAA
+  auditors:
+  - Secureframe
+  - Johanson Group

@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Brellium
+  version: 1.0.0
+extends: openapi/brellium-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment: '2026-07-18'
+    x-apievangelist-notes: >-
+      Harvested verbatim from the ReadMe api-registry (uuid 1fqdn8ompocq84t). Content gaps
+      to raise with Brellium: operations declare no operationId (all 17 paths); no tags;
+      no rate-limit signaling; errors are plain JSON { message } rather than RFC 9457
+      application/problem+json.
+    x-apievangelist-domain: healthcare-clinical-compliance
+- target: $.components.securitySchemes.bearerAuth
+  update:
+    x-token-endpoint: POST /auth
+    x-token-ttl: 24h
+    x-credentials: client_id + client_secret

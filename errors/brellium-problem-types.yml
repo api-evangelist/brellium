@@ -1,0 +1,42 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/brellium-openapi-original.json
+format: json
+envelope:
+  note: Errors are returned as a JSON object with a human-readable "message" field; the spec does not
+    use application/problem+json (RFC 9457).
+  fields:
+  - message
+remediation:
+  '401': Re-authenticate via POST /auth (client_id + client_secret) and retry with a fresh Bearer JWT;
+    tokens expire after 24h. Docs recommend triggering a token refresh + retry on 400 responses.
+problems:
+- status: 400
+  title: Invalid request
+  description: Delete failed. / Invalid request.
+  occurs_on:
+  - POST /users
+  - POST /users/{user_id}
+  - DELETE /users/{user_id}
+- status: 401
+  title: Unauthorized
+  description: Unauthorized.
+  occurs_on:
+  - POST /users
+  - GET /users
+  - GET /users/{user_id}
+  - POST /users/{user_id}
+  - DELETE /users/{user_id}
+- status: 404
+  title: Resource not found
+  description: User not found.
+  occurs_on:
+  - GET /users/{user_id}
+  - POST /users/{user_id}
+  - DELETE /users/{user_id}
+- status: 500
+  title: Server error
+  description: Server error.
+  occurs_on:
+  - POST /users
+  - DELETE /users/{user_id}

@@ -1,0 +1,15 @@
+generated: '2026-07-18'
+method: searched
+source: https://brellium-ai.readme.io/docs/getting-started
+spec_type: Webhooks
+note: Brellium documents webhooks for real-time audit notifications; enabling them requires
+  account-manager setup. No published AsyncAPI document or open event catalog was found
+  (searched docs, GitHub, /asyncapi.yaml 2026-07-18), so this captures the documented
+  webhook surface only. Not fabricated beyond what the getting-started guide states.
+webhooks:
+- event: audit.completed
+  description: Real-time notification delivered when an audit finishes for a submitted document,
+    as an alternative to polling POST /audits or GET /audits/{audit_id}.
+  delivery: HTTP callback to a customer-provided endpoint
+  enablement: Requires setup via a Brellium account manager.
+transport: http-callback

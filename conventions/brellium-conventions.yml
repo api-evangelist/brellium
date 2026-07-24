@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: searched
+source: https://brellium-ai.readme.io/docs/getting-started
+spec: openapi/brellium-openapi-original.json
+authentication:
+  style: bearer-jwt
+  scheme: http bearer (JWT)
+  token_endpoint: POST /auth
+  credentials: client_id + client_secret (client-credentials style)
+  token_ttl: 24h
+  header: 'Authorization: Bearer <JWT>'
+  retry_guidance: Docs recommend an auth flow where a 400 response triggers a token refresh and retry.
+  cross_ref: authentication/brellium-authentication.yml
+idempotency:
+  supported: false
+  note: Brellium documents no idempotency-key header or parameter; the OpenAPI declares
+    no Idempotency-Key. No idempotency pointer is emitted.
+pagination:
+  style: page-number
+  request_params:
+    page: Page number (integer)
+    pageSize: Page size, up to 1000 per page
+  applies_to:
+  - POST /audits
+  - POST /coding
+  note: List operations are POST-with-filter-body; filters carry pagination + date-range +
+    score-bound criteria (AuditFilter / CodingEvalFilter).
+response_shaping:
+  note: List responses can be expanded via boolean query flags rather than sparse-fieldset syntax.
+  flags:
+  - includeDisplayInfo
+  - includePeople
+  - includeQuestionIds
+  - includeLastReviewed
+  - includeResponses
+  - includeTestAudits
+  - verbose
+metadata:
+  supported: true
+  field: external_metadata
+  note: Documents accept an external_metadata object so callers can attach their own internal identifiers.
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.brellium.com/v1
+error_envelope:
+  format: json
+  fields:
+  - message
+  note: Plain JSON error object with a human-readable message; not RFC 9457 problem+json.
+  cross_ref: errors/brellium-problem-types.yml
+rate_limiting:
+  documented: false
+  note: No rate-limit headers or policy documented in spec or getting-started guide.

@@ -1,0 +1,76 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/brellium-openapi-original.json
+entities:
+- name: Document
+  id_field: document_id
+  fields:
+  - document_id
+  - org_id
+  - filename
+  - status
+  - handler
+  - audit_created
+  - needs_audit
+  - external_metadata
+- name: Audit
+  id_field: audit_id
+  fields:
+  - audit_id
+  - status
+  - score
+  - flags
+  - reviewed_by
+  - set_id
+  - timestamp
+  - responses
+- name: CodingEval
+  id_field: coding_eval_id
+  fields:
+  - coding_eval_id
+  - status
+  - reviewed_by
+  - timestamp
+  - em_eval
+  - icd_eval
+  - responses
+  - documents
+- name: QuestionSet
+  id_field: set_id
+  fields:
+  - set_id
+  - name
+  - questions
+- name: User
+  id_field: user_id
+  fields:
+  - user_id
+relationships:
+- from: Audit
+  to: QuestionSet
+  type: belongs_to
+  via: set_id
+- from: Audit
+  to: Document
+  type: has_many
+  via: documents
+- from: CodingEval
+  to: Document
+  type: has_many
+  via: documents
+- from: Document
+  to: Organization
+  type: belongs_to
+  via: org_id
+- from: QuestionSet
+  to: Question
+  type: has_many
+  via: questions
+- from: Audit
+  to: User
+  type: belongs_to
+  via: reviewed_by
+- from: CodingEval
+  to: User
+  type: belongs_to
+  via: reviewed_by

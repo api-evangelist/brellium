@@ -1,0 +1,30 @@
+{
+  "provider": "brellium",
+  "sources": [
+    "brellium-audits-api-openapi.yml",
+    "brellium-auth-api-openapi.yml",
+    "brellium-coding-api-openapi.yml",
+    "brellium-documents-api-openapi.yml",
+    "brellium-documents-multiple-api-openapi.yml",
+    "brellium-link-providers-api-openapi.yml",
+    "brellium-question-sets-api-openapi.yml",
+    "brellium-update-audits-flags-api-openapi.yml",
+    "brellium-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "brellium-audits-api-openapi.yml",
+    "brellium-auth-api-openapi.yml",
+    "brellium-coding-api-openapi.yml",
+    "brellium-documents-api-openapi.yml",
+    "brellium-documents-multiple-api-openapi.yml",
+    "brellium-link-providers-api-openapi.yml",
+    "brellium-question-sets-api-openapi.yml",
+    "brellium-update-audits-flags-api-openapi.yml",
+    "brellium-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

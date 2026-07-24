@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/brellium-openapi-original.json
+note: Skills grounded in real HTTP method+path (the spec declares no operationIds).
+skills:
+- file: brellium-submit-and-audit.md
+  name: Submit a clinical document and retrieve its audit
+  api: openapi/brellium-openapi-original.json
+  operations:
+  - POST /auth
+  - POST /documents
+  - GET /documents/{document_id}
+  - POST /audits
+  - GET /audits/{audit_id}
+- file: brellium-coding-review.md
+  name: Review coding (E&M / CPT / ICD) evaluations
+  api: openapi/brellium-openapi-original.json
+  operations:
+  - POST /auth
+  - POST /coding
+  - GET /coding/{coding_eval_id}

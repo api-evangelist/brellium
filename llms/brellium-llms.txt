@@ -1,0 +1,25 @@
+# brellium-ai Documentation
+
+> Documentation for brellium-ai
+
+## Guides
+- [Getting Started with the Brellium API](https://brellium-ai.readme.io/docs/getting-started.md): This page will describe best practices and help you integrate with the Brellium API.
+
+## API Reference
+- [Authenticate user](https://brellium-ai.readme.io/reference/post_auth.md)
+- [Upload a document](https://brellium-ai.readme.io/reference/post_documents.md)
+- [Upload multiple documents for the same audit](https://brellium-ai.readme.io/reference/post_documents-multiple.md)
+- [Get a presigned URL to upload a large document](https://brellium-ai.readme.io/reference/post_documents-upload-url.md)
+- [Get information about a specific document](https://brellium-ai.readme.io/reference/get_documents-document-id.md)
+- [List audits based on filter criteria](https://brellium-ai.readme.io/reference/post_audits.md)
+- [Get information about a specific audit](https://brellium-ai.readme.io/reference/get_audits-audit-id.md)
+- [Get all users for organization](https://brellium-ai.readme.io/reference/get_users.md)
+- [Create a new user](https://brellium-ai.readme.io/reference/post_users.md)
+- [Get a specific user](https://brellium-ai.readme.io/reference/get_users-user-id.md)
+- [Update a user](https://brellium-ai.readme.io/reference/post_users-user-id.md)
+- [Delete a user](https://brellium-ai.readme.io/reference/delete_users-user-id.md)
+- [List question sets](https://brellium-ai.readme.io/reference/get_question-sets.md)
+- [Update flags for a list of audits](https://brellium-ai.readme.io/reference/post_update-audits-flags.md)
+- [Link providers to their email using a CSV upload](https://brellium-ai.readme.io/reference/post_link-providers.md)
+- [List coding evaluations based on filter criteria](https://brellium-ai.readme.io/reference/post_coding.md)
+- [Get information about a specific coding evaluation](https://brellium-ai.readme.io/reference/get_coding-coding-eval-id.md)

@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: https://brellium-ai.readme.io/docs/getting-started
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.brellium.com/v1
+  docs: https://brellium-ai.readme.io/docs/getting-started
+terms_of_service: https://brellium.com/terms
+deprecation:
+  policy_documented: false
+  sunset_header: unknown
+  note: No published deprecation policy or RFC 8594 Sunset/Deprecation header support found.
+status_page:
+  url: null
+  note: 'Brellium markets 99.99% uptime but publishes no public status page (status.brellium.com
+    does not resolve as of 2026-07-18). No StatusPage pointer emitted.'
+sla:
+  uptime_claim: '99.99%'
+  source: https://brellium.com/products/chart-review-api
+deprecated_operations: []

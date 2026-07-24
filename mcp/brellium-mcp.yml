@@ -1,0 +1,62 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/brellium-openapi-original.json
+status: candidate
+note: No official Brellium MCP server found (searched docs/registries 2026-07-18). Candidate tool list
+  derived one-per-operation from the harvested OpenAPI; the spec declares no operationIds, so tool names
+  are synthesized from HTTP method + path.
+server:
+  name: brellium
+  transport: http
+tools:
+- name: post_auth
+  description: Authenticate user
+  source_operation: openapi/brellium-openapi-original.json#POST /auth
+- name: post_documents
+  description: Upload a document
+  source_operation: openapi/brellium-openapi-original.json#POST /documents
+- name: post_documents_upload_url
+  description: Get a presigned URL to upload a large document
+  source_operation: openapi/brellium-openapi-original.json#POST /documents/upload-url
+- name: post_documents_multiple
+  description: Upload multiple documents for the same audit
+  source_operation: openapi/brellium-openapi-original.json#POST /documents-multiple
+- name: get_documents_by_document_id
+  description: Get information about a specific document
+  source_operation: openapi/brellium-openapi-original.json#GET /documents/{document_id}
+- name: post_audits
+  description: List audits based on filter criteria
+  source_operation: openapi/brellium-openapi-original.json#POST /audits
+- name: get_audits_by_audit_id
+  description: Get information about a specific audit
+  source_operation: openapi/brellium-openapi-original.json#GET /audits/{audit_id}
+- name: post_coding
+  description: List coding evaluations based on filter criteria
+  source_operation: openapi/brellium-openapi-original.json#POST /coding
+- name: get_coding_by_coding_eval_id
+  description: Get information about a specific coding evaluation
+  source_operation: openapi/brellium-openapi-original.json#GET /coding/{coding_eval_id}
+- name: post_users
+  description: Create a new user
+  source_operation: openapi/brellium-openapi-original.json#POST /users
+- name: get_users
+  description: Get all users for organization
+  source_operation: openapi/brellium-openapi-original.json#GET /users
+- name: get_users_by_user_id
+  description: Get a specific user
+  source_operation: openapi/brellium-openapi-original.json#GET /users/{user_id}
+- name: post_users_by_user_id
+  description: Update a user
+  source_operation: openapi/brellium-openapi-original.json#POST /users/{user_id}
+- name: delete_users_by_user_id
+  description: Delete a user
+  source_operation: openapi/brellium-openapi-original.json#DELETE /users/{user_id}
+- name: get_question_sets
+  description: List question sets
+  source_operation: openapi/brellium-openapi-original.json#GET /question-sets
+- name: post_update_audits_flags
+  description: Update flags for a list of audits
+  source_operation: openapi/brellium-openapi-original.json#POST /update-audits-flags
+- name: post_link_providers
+  description: Link providers to their email using a CSV upload
+  source_operation: openapi/brellium-openapi-original.json#POST /link-providers

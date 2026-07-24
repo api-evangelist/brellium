@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: searched
+source: https://brellium.substack.com/archive
+scheme: date-and-feature (product release notes; version tags mirror MM.DD, e.g. 5.2, 7.23)
+note: Brellium publishes dated product release notes via its Substack newsletter rather than
+  an API-specific changelog. Recent window captured below.
+entries:
+- date: '2026-03-03'
+  title: Your March Brellium Update
+  highlights: New executives, advisors, and offerings for Hospice and ABA services.
+- date: '2026-02-05'
+  title: Introducing ABA Treatment Plans
+  highlights: Cut ABA treatment-plan review time in half.
+- date: '2025-08-25'
+  title: Introducing Brellium's Coding Module
+  highlights: Coding accuracy and compliance evaluation (surfaced in the API as the /coding endpoints).
+- date: '2025-07-23'
+  title: 'Brellium 7.23: Introducing Case Manager'
+  highlights: Track quality and compliance across the patient journey.
+- date: '2025-05-30'
+  title: 'Brellium 5.29: Introducing Audit Intelligence'
+  highlights: New hub for payor and regulatory updates.
+- date: '2025-05-02'
+  title: 'Brellium 5.2: Track quality improvements over time'
+  highlights: Audit flag trends and workspace organization.

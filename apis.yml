@@ -1,22 +1,248 @@
 aid: brellium
 name: Brellium
-description: Brellium is a company surfaced as a portfolio company of menlo-ventures and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Brellium is an AI-powered clinical compliance platform for healthcare organizations. Its clinical
+  AI audits 100% of a provider's clinical documentation and medical coding across every patient
+  visit, checking notes against payor, clinical-quality, and billing requirements to catch
+  compliance risks before they become clawbacks and to surface earned-but-unbilled revenue. It flags
+  issues such as inaccurate MDM/E&M coding, cloned notes, and inconsistent session lengths, and
+  gives clinical teams instant correction guidance. Brellium serves tech-enabled clinics, behavioral
+  health, ABA, hospice, and digital-health providers, and exposes a REST API so platforms can embed
+  chart-review and coding audits directly into their EMR or telehealth workflows.
 url: https://raw.githubusercontent.com/api-evangelist/brellium/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://brellium.com/og-image.png?v=3
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - menlo-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: real-api-harvested
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Healthcare
+- Clinical Compliance
+- Clinical Documentation
+- Medical Coding
+- Audit
+- Behavioral Health
+- Digital Health
+- API
+apis:
+- aid: brellium:brellium-audits-api
+  name: Brellium Audits API
+  description: The Audits API from Brellium — 2 operation(s) for audits.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Audits
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-audits-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-auth-api
+  name: Brellium Auth API
+  description: The Auth API from Brellium — 1 operation(s) for auth.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-auth-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-coding-api
+  name: Brellium Coding API
+  description: The Coding API from Brellium — 2 operation(s) for coding.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Coding
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-coding-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-documents-api
+  name: Brellium Documents API
+  description: The Documents API from Brellium — 3 operation(s) for documents.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-documents-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-documents-multiple-api
+  name: Brellium Documents Multiple API
+  description: The Documents Multiple API from Brellium — 1 operation(s) for documents multiple.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Documents Multiple
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-documents-multiple-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-link-providers-api
+  name: Brellium Link Providers API
+  description: The Link Providers API from Brellium — 1 operation(s) for link providers.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Link Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-link-providers-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-question-sets-api
+  name: Brellium Question Sets API
+  description: The Question Sets API from Brellium — 1 operation(s) for question sets.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Question Sets
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-question-sets-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-update-audits-flags-api
+  name: Brellium Update Audits Flags API
+  description: The Update Audits Flags API from Brellium — 1 operation(s) for update audits flags.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Update Audits Flags
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-update-audits-flags-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
+- aid: brellium:brellium-users-api
+  name: Brellium Users API
+  description: The Users API from Brellium — 2 operation(s) for users.
+  humanURL: https://brellium-ai.readme.io/docs/getting-started
+  baseURL: https://api.brellium.com/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/brellium-users-api-openapi.yml
+  - type: Documentation
+    url: https://brellium-ai.readme.io/docs/getting-started
+  - type: APIReference
+    url: https://brellium-ai.readme.io/reference/post_auth
+  - type: GettingStarted
+    url: https://brellium-ai.readme.io/docs/getting-started
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: AgenticAccess
+  url: agentic-access/brellium-agentic-access.yml
+- type: DomainSecurity
+  url: security/brellium-domain-security.yml
+- type: Authentication
+  url: authentication/brellium-authentication.yml
+- type: MCPServer
+  url: mcp/brellium-mcp.yml
+- type: LLMsTxt
+  url: llms/brellium-llms.txt
+- type: ErrorCatalog
+  url: errors/brellium-problem-types.yml
+- type: Conventions
+  url: conventions/brellium-conventions.yml
+- type: Lifecycle
+  url: lifecycle/brellium-lifecycle.yml
+- type: Conformance
+  url: conformance/brellium-conformance.yml
+- type: Compliance
+  url: https://www.brellium.com/security
+- type: TrustCenter
+  url: security/brellium-trust-center.yml
+- type: DataModel
+  url: data-model/brellium-data-model.yml
+- type: ChangeLog
+  url: changelog/brellium-changelog.yml
+- type: Webhooks
+  url: asyncapi/brellium-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/brellium-overlay.yaml
+- type: DeveloperPortal
+  url: https://brellium-ai.readme.io/
+- type: Documentation
+  url: https://brellium-ai.readme.io/docs/getting-started
+- type: APIReference
+  url: https://brellium-ai.readme.io/reference/post_auth
+- type: GettingStarted
+  url: https://brellium-ai.readme.io/docs/getting-started
+- type: Blog
+  url: https://www.brellium.com/blog
+- type: Support
+  url: mailto:support@brellium.com
+- type: TermsOfService
+  url: https://brellium.com/terms
+- type: PrivacyPolicy
+  url: https://brellium.com/privacy-policy
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
