@@ -3,12 +3,9 @@
   "feeds": [
     {
       "source": "https://brellium-ai.readme.io/docs/getting-started",
-      "feed_url": "https://brellium-ai.readme.io/docs/getting-started",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "error": "HTTPError"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-08-06T14:08:46Z"
+  "fetched": "2026-08-15T12:22:01Z"
 }
