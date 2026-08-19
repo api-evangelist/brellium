@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "a4162dcf-04af-4a78-8647-3352082225e4",
+      "name": "Coding",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e1e6011-c569-466a-a4ba-3eb1ba857580",
+          "name": "List coding evaluations based on filter criteria",
+          "request": {
+            "name": "List coding evaluations based on filter criteria",
+            "description": {},
+            "url": {
+              "path": [
+                "coding"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verbose\": \"<string>\",\n  \"status\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documents\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionStartDate\": \"<dateTime>\",\n  \"sessionEndDate\": \"<dateTime>\",\n  \"evalStartDate\": \"<dateTime>\",\n  \"evalEndDate\": \"<dateTime>\",\n  \"emScoreLowerBound\": \"<float>\",\n  \"emScoreUpperBound\": \"<float>\",\n  \"cptCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recommendedCptCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"problemsLevel\": \"<string>\",\n  \"dataLevel\": \"<string>\",\n  \"riskLevel\": \"<string>\",\n  \"mdmLevel\": \"<string>\",\n  \"timeBased\": \"<string>\",\n  \"baseCodeAligned\": \"<string>\",\n  \"addOnCodesAligned\": \"<string>\",\n  \"upcoded\": \"<string>\",\n  \"downcoded\": \"<string>\",\n  \"icdScoreLowerBound\": \"<float>\",\n  \"icdScoreUpperBound\": \"<float>\",\n  \"icdCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hccCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lastUpdatedStartDate\": \"<dateTime>\",\n  \"lastUpdatedEndDate\": \"<dateTime>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"includeDisplayInfo\": \"<string>\",\n  \"includePeople\": \"<string>\",\n  \"includeQuestionIds\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3d603c8-b467-437e-a861-925e86f52c49",
+              "name": "List of coding evaluations. The structure of the returned coding evaluations depends on the 'verbose', 'includeDisplayInfo', 'includePeople', and 'includeQuestionIds' flags in the request. If 'verbose' is true, full coding evaluation details are returned (Coding Evaluation schema). If 'verbose' is false, a reduced coding evaluation object is returned (CodingEvaluationInfo schema). If 'includeDisplayInfo' and 'includePeople' are true, the returned audits will include display info and people respectively. If 'includeQuestionIds' is true, the returned additional criteria responses will include question ids. Both 'verbose' and the other flags can be used together.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verbose\": \"<string>\",\n  \"status\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"documents\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionStartDate\": \"<dateTime>\",\n  \"sessionEndDate\": \"<dateTime>\",\n  \"evalStartDate\": \"<dateTime>\",\n  \"evalEndDate\": \"<dateTime>\",\n  \"emScoreLowerBound\": \"<float>\",\n  \"emScoreUpperBound\": \"<float>\",\n  \"cptCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recommendedCptCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"problemsLevel\": \"<string>\",\n  \"dataLevel\": \"<string>\",\n  \"riskLevel\": \"<string>\",\n  \"mdmLevel\": \"<string>\",\n  \"timeBased\": \"<string>\",\n  \"baseCodeAligned\": \"<string>\",\n  \"addOnCodesAligned\": \"<string>\",\n  \"upcoded\": \"<string>\",\n  \"downcoded\": \"<string>\",\n  \"icdScoreLowerBound\": \"<float>\",\n  \"icdScoreUpperBound\": \"<float>\",\n  \"icdCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hccCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lastUpdatedStartDate\": \"<dateTime>\",\n  \"lastUpdatedEndDate\": \"<dateTime>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"includeDisplayInfo\": \"<string>\",\n  \"includePeople\": \"<string>\",\n  \"includeQuestionIds\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"coding_eval_id\": \"string\",\n    \"status\": \"string\",\n    \"reviewed_by\": \"string\",\n    \"timestamp\": \"1993-10-26T07:45:48.219Z\",\n    \"em_eval\": {\n      \"em_eval_id\": \"string\",\n      \"score\": 9278.223630131777,\n      \"flags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"base_code_aligned\": true,\n      \"add_on_codes_aligned\": false,\n      \"problems_level\": \"string\",\n      \"data_level\": \"string\",\n      \"risk_level\": \"string\",\n      \"mdm_level\": \"string\",\n      \"time_based\": true,\n      \"encounter_time_minutes\": 5144,\n      \"upcoded\": true,\n      \"downcoded\": false,\n      \"submitted_base_code\": \"string\",\n      \"submitted_add_on_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"recommended_base_code\": \"string\",\n      \"recommended_add_on_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"problems\": [\n        {\n          \"problem_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"problem_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"data\": [\n        {\n          \"data_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"data_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"risk\": [\n        {\n          \"risk_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"risk_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    },\n    \"icd_eval\": {\n      \"icd_eval_id\": \"string\",\n      \"score\": 8961.348848009788,\n      \"flags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"icd_codes\": [\n        {\n          \"icd_code\": \"string\",\n          \"hcc_code\": \"string\",\n          \"hcc_model_name\": \"string\",\n          \"criteria\": [\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": false\n            },\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": true\n            }\n          ]\n        },\n        {\n          \"icd_code\": \"string\",\n          \"hcc_code\": \"string\",\n          \"hcc_model_name\": \"string\",\n          \"criteria\": [\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": true\n            },\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": false\n            }\n          ]\n        }\n      ]\n    },\n    \"responses\": [\n      {\n        \"query\": \"string\",\n        \"answer\": \"string\",\n        \"context\": \"string\",\n        \"question_id\": \"string\",\n        \"response_id\": \"string\"\n      },\n      {\n        \"query\": \"string\",\n        \"answer\": \"string\",\n        \"context\": \"string\",\n        \"question_id\": \"string\",\n        \"response_id\": \"string\"\n      }\n    ],\n    \"display_info\": [\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      }\n    ],\n    \"people\": [\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      }\n    ],\n    \"documents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"people_emails\": [\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      }\n    ]\n  },\n  {\n    \"coding_eval_id\": \"string\",\n    \"status\": \"string\",\n    \"reviewed_by\": \"string\",\n    \"timestamp\": \"1992-12-02T05:35:09.048Z\",\n    \"em_eval\": {\n      \"em_eval_id\": \"string\",\n      \"score\": 1369.4710260418808,\n      \"flags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"base_code_aligned\": true,\n      \"add_on_codes_aligned\": false,\n      \"problems_level\": \"string\",\n      \"data_level\": \"string\",\n      \"risk_level\": \"string\",\n      \"mdm_level\": \"string\",\n      \"time_based\": false,\n      \"encounter_time_minutes\": 7994,\n      \"upcoded\": false,\n      \"downcoded\": true,\n      \"submitted_base_code\": \"string\",\n      \"submitted_add_on_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"recommended_base_code\": \"string\",\n      \"recommended_add_on_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"problems\": [\n        {\n          \"problem_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"problem_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"data\": [\n        {\n          \"data_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"data_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"risk\": [\n        {\n          \"risk_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"risk_id\": \"string\",\n          \"category\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    },\n    \"icd_eval\": {\n      \"icd_eval_id\": \"string\",\n      \"score\": 5920.845145707652,\n      \"flags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"icd_codes\": [\n        {\n          \"icd_code\": \"string\",\n          \"hcc_code\": \"string\",\n          \"hcc_model_name\": \"string\",\n          \"criteria\": [\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": true\n            },\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": true\n            }\n          ]\n        },\n        {\n          \"icd_code\": \"string\",\n          \"hcc_code\": \"string\",\n          \"hcc_model_name\": \"string\",\n          \"criteria\": [\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": true\n            },\n            {\n              \"icd_criteria_id\": \"string\",\n              \"criteria_name\": \"string\",\n              \"criteria_context\": \"string\",\n              \"is_criteria_met\": true\n            }\n          ]\n        }\n      ]\n    },\n    \"responses\": [\n      {\n        \"query\": \"string\",\n        \"answer\": \"string\",\n        \"context\": \"string\",\n        \"question_id\": \"string\",\n        \"response_id\": \"string\"\n      },\n      {\n        \"query\": \"string\",\n        \"answer\": \"string\",\n        \"context\": \"string\",\n        \"question_id\": \"string\",\n        \"response_id\": \"string\"\n      }\n    ],\n    \"display_info\": [\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      }\n    ],\n    \"people\": [\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"order\": \"string\",\n        \"title\": \"string\",\n        \"value\": \"string\",\n        \"format\": \"string\",\n        \"filter_type\": \"string\"\n      }\n    ],\n    \"documents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"people_emails\": [\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa2ce4cf-0a4c-4218-ac05-5aebf04e3b4a",
+          "name": "Get information about a specific coding evaluation",
+          "request": {
+            "name": "Get information about a specific coding evaluation",
+            "description": {},
+            "url": {
+              "path": [
+                "coding",
+                ":coding_eval_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDisplayInfo",
+                  "value": "<string>",
+                  "description": "Include display info in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "includePeople",
+                  "value": "<string>",
+                  "description": "Include people information in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeResponses",
+                  "value": "<string>",
+                  "description": "Include additional criteria responses in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeQuestionIds",
+                  "value": "<string>",
+                  "description": "Include question ids in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coding_eval_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b0b205d-ac1a-4830-985d-69ff24ffaef8",
+              "name": "Coding evaluation information, optionally including display info, people, and additional criteria responses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coding",
+                    ":coding_eval_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDisplayInfo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includePeople",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeResponses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeQuestionIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coding_eval_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"coding_eval_id\": \"string\",\n  \"status\": \"string\",\n  \"reviewed_by\": \"string\",\n  \"timestamp\": \"2018-09-12T10:11:22.902Z\",\n  \"em_eval\": {\n    \"em_eval_id\": \"string\",\n    \"score\": 6391.334272857506,\n    \"flags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"base_code_aligned\": false,\n    \"add_on_codes_aligned\": false,\n    \"problems_level\": \"string\",\n    \"data_level\": \"string\",\n    \"risk_level\": \"string\",\n    \"mdm_level\": \"string\",\n    \"time_based\": false,\n    \"encounter_time_minutes\": 2678,\n    \"upcoded\": false,\n    \"downcoded\": true,\n    \"submitted_base_code\": \"string\",\n    \"submitted_add_on_codes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"recommended_base_code\": \"string\",\n    \"recommended_add_on_codes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"problems\": [\n      {\n        \"problem_id\": \"string\",\n        \"category\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"problem_id\": \"string\",\n        \"category\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"data\": [\n      {\n        \"data_id\": \"string\",\n        \"category\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"data_id\": \"string\",\n        \"category\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"risk\": [\n      {\n        \"risk_id\": \"string\",\n        \"category\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"risk_id\": \"string\",\n        \"category\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  },\n  \"icd_eval\": {\n    \"icd_eval_id\": \"string\",\n    \"score\": 1704.949836396572,\n    \"flags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"icd_codes\": [\n      {\n        \"icd_code\": \"string\",\n        \"hcc_code\": \"string\",\n        \"hcc_model_name\": \"string\",\n        \"criteria\": [\n          {\n            \"icd_criteria_id\": \"string\",\n            \"criteria_name\": \"string\",\n            \"criteria_context\": \"string\",\n            \"is_criteria_met\": true\n          },\n          {\n            \"icd_criteria_id\": \"string\",\n            \"criteria_name\": \"string\",\n            \"criteria_context\": \"string\",\n            \"is_criteria_met\": false\n          }\n        ]\n      },\n      {\n        \"icd_code\": \"string\",\n        \"hcc_code\": \"string\",\n        \"hcc_model_name\": \"string\",\n        \"criteria\": [\n          {\n            \"icd_criteria_id\": \"string\",\n            \"criteria_name\": \"string\",\n            \"criteria_context\": \"string\",\n            \"is_criteria_met\": true\n          },\n          {\n            \"icd_criteria_id\": \"string\",\n            \"criteria_name\": \"string\",\n            \"criteria_context\": \"string\",\n            \"is_criteria_met\": true\n          }\n        ]\n      }\n    ]\n  },\n  \"responses\": [\n    {\n      \"query\": \"string\",\n      \"answer\": \"string\",\n      \"context\": \"string\",\n      \"question_id\": \"string\",\n      \"response_id\": \"string\"\n    },\n    {\n      \"query\": \"string\",\n      \"answer\": \"string\",\n      \"context\": \"string\",\n      \"question_id\": \"string\",\n      \"response_id\": \"string\"\n    }\n  ],\n  \"display_info\": [\n    {\n      \"key\": \"string\",\n      \"order\": \"string\",\n      \"title\": \"string\",\n      \"value\": \"string\",\n      \"format\": \"string\",\n      \"filter_type\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"order\": \"string\",\n      \"title\": \"string\",\n      \"value\": \"string\",\n      \"format\": \"string\",\n      \"filter_type\": \"string\"\n    }\n  ],\n  \"people\": [\n    {\n      \"key\": \"string\",\n      \"order\": \"string\",\n      \"title\": \"string\",\n      \"value\": \"string\",\n      \"format\": \"string\",\n      \"filter_type\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"order\": \"string\",\n      \"title\": \"string\",\n      \"value\": \"string\",\n      \"format\": \"string\",\n      \"filter_type\": \"string\"\n    }\n  ],\n  \"documents\": [\n    \"string\",\n    \"string\"\n  ],\n  \"people_emails\": [\n    {\n      \"title\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brellium.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "23e0d734-369e-4138-8b63-842c290752ee",
+    "name": "Brellium Audits Coding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for base Brellium functionality.\n\nContact Support:\n Name: Brellium Team\n Email: support@brellium.com",
+      "type": "text/plain"
+    }
+  }
+}

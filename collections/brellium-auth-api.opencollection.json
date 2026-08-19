@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brellium Audits Auth API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brellium.com/v1/auth",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticate user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brellium Audits Link Providers API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Link Providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Link providers to their email using a CSV upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brellium.com/v1/link-providers",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Link providers to their email using a CSV upload"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

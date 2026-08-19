@@ -1,0 +1,136 @@
+{
+  "item": [
+    {
+      "id": "630189d1-988e-4f72-99f6-35be74888abb",
+      "name": "Update Audits Flags",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4eac0dff-ea70-4dbd-af7c-02fe7fb3c0ff",
+          "name": "Update flags for a list of audits",
+          "request": {
+            "name": "Update flags for a list of audits",
+            "description": {},
+            "url": {
+              "path": [
+                "update-audits-flags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"audit_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3550e849-ce5c-4675-8738-48c1fae04060",
+              "name": "Audits updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-audits-flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"audit_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filter\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"updated_audit_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brellium.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1bedf87b-249d-46f2-a5c1-9a5779e0e2c0",
+    "name": "Brellium Audits Update Audits Flags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for base Brellium functionality.\n\nContact Support:\n Name: Brellium Team\n Email: support@brellium.com",
+      "type": "text/plain"
+    }
+  }
+}

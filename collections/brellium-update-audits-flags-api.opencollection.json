@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brellium Audits Update Audits Flags API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Update Audits Flags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update flags for a list of audits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brellium.com/v1/update-audits-flags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update flags for a list of audits"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

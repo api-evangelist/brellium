@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brellium Audits API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List audits based on filter criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brellium.com/v1/audits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List audits based on filter criteria"
+        },
+        {
+          "info": {
+            "name": "Get information about a specific audit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brellium.com/v1/audits/:audit_id",
+            "params": [
+              {
+                "name": "audit_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeDisplayInfo",
+                "value": "",
+                "type": "query",
+                "description": "Include display info in the response."
+              },
+              {
+                "name": "includePeople",
+                "value": "",
+                "type": "query",
+                "description": "Include people information in the response."
+              },
+              {
+                "name": "includeQuestionIds",
+                "value": "",
+                "type": "query",
+                "description": "Include question ids in the response."
+              },
+              {
+                "name": "includeLastReviewed",
+                "value": "",
+                "type": "query",
+                "description": "Include last reviewed timestamp in the response - N/A if never reviewed."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get information about a specific audit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brellium Audits Question Sets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Question Sets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List question sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brellium.com/v1/question-sets",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List question sets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

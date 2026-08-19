@@ -1,0 +1,115 @@
+{
+  "item": [
+    {
+      "id": "1287bb12-d4b6-4d69-98aa-faf01ff991bf",
+      "name": "Question Sets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e197d69f-2d03-4d91-9c45-ac11a1c60975",
+          "name": "List question sets",
+          "request": {
+            "name": "List question sets",
+            "description": {},
+            "url": {
+              "path": [
+                "question-sets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "faac1300-ee50-43ec-a9e9-a3b8a8bed1c7",
+              "name": "List of question sets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "question-sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"set_id\": \"string\",\n    \"questions\": [\n      {\n        \"question_id\": \"string\",\n        \"query\": \"string\",\n        \"question_type\": \"string\",\n        \"severity\": \"string\",\n        \"remediation\": \"string\",\n        \"affirmation\": \"string\"\n      },\n      {\n        \"question_id\": \"string\",\n        \"query\": \"string\",\n        \"question_type\": \"string\",\n        \"severity\": \"string\",\n        \"remediation\": \"string\",\n        \"affirmation\": \"string\"\n      }\n    ],\n    \"name\": \"string\"\n  },\n  {\n    \"set_id\": \"string\",\n    \"questions\": [\n      {\n        \"question_id\": \"string\",\n        \"query\": \"string\",\n        \"question_type\": \"string\",\n        \"severity\": \"string\",\n        \"remediation\": \"string\",\n        \"affirmation\": \"string\"\n      },\n      {\n        \"question_id\": \"string\",\n        \"query\": \"string\",\n        \"question_type\": \"string\",\n        \"severity\": \"string\",\n        \"remediation\": \"string\",\n        \"affirmation\": \"string\"\n      }\n    ],\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brellium.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a3f2e4ee-c145-45ef-aa90-1b3a8d7b1ce2",
+    "name": "Brellium Audits Question Sets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for base Brellium functionality.\n\nContact Support:\n Name: Brellium Team\n Email: support@brellium.com",
+      "type": "text/plain"
+    }
+  }
+}

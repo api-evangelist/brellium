@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "42ce9967-c83c-4883-8c5b-f381dfa42bf9",
+      "name": "Link Providers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce6b52e0-72c9-4d7e-a990-7753108200eb",
+          "name": "Link providers to their email using a CSV upload",
+          "request": {
+            "name": "Link providers to their email using a CSV upload",
+            "description": {},
+            "url": {
+              "path": [
+                "link-providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Upload a single CSV file."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "51ebde9f-feb2-47bc-ac91-617aa633bc2d",
+              "name": "Result of provider linking operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "link-providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Upload a single CSV file.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"status\": \"updated\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"reason\": \"string\"\n  },\n  {\n    \"status\": \"updated\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"reason\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brellium.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a520714e-8e80-4c9d-a812-46ffe0627be2",
+    "name": "Brellium Audits Link Providers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for base Brellium functionality.\n\nContact Support:\n Name: Brellium Team\n Email: support@brellium.com",
+      "type": "text/plain"
+    }
+  }
+}

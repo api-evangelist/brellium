@@ -60,3 +60,9 @@ tools:
 - name: post_link_providers
   description: Link providers to their email using a CSV upload
   source_operation: openapi/brellium-openapi-original.json#POST /link-providers
+deployment:
+  mode: none
+  verified: derived
+  tools: 17
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "93a87332-72dc-42e6-b3b8-1d51558896b0",
+      "name": "Documents Multiple",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "051c78a1-6537-4d5e-a41b-dd87a39cdd11",
+          "name": "Upload multiple documents for the same audit",
+          "request": {
+            "name": "Upload multiple documents for the same audit",
+            "description": {},
+            "url": {
+              "path": [
+                "documents-multiple"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "(Required) PDF, JSON, YML, or TXT files. Maximum individual file size: 10 MB."
+                },
+                {
+                  "key": "metadata",
+                  "value": "{\"key_0\":6873,\"key_1\":653.3263790760179}",
+                  "type": "text",
+                  "description": "Optional metadata object."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a414c1d-369f-4424-8437-62d1ca2c1791",
+              "name": "Documents created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents-multiple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) PDF, JSON, YML, or TXT files. Maximum individual file size: 10 MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional metadata object.",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "{\"key_0\":2591,\"key_1\":7594.422330348498}",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"document_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brellium.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e1b01bf1-743b-42df-907f-833def3fecdd",
+    "name": "Brellium Audits Documents Multiple API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for base Brellium functionality.\n\nContact Support:\n Name: Brellium Team\n Email: support@brellium.com",
+      "type": "text/plain"
+    }
+  }
+}

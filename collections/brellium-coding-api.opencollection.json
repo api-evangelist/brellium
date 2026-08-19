@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brellium Audits Coding API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List coding evaluations based on filter criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.brellium.com/v1/coding",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List coding evaluations based on filter criteria"
+        },
+        {
+          "info": {
+            "name": "Get information about a specific coding evaluation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brellium.com/v1/coding/:coding_eval_id",
+            "params": [
+              {
+                "name": "coding_eval_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeDisplayInfo",
+                "value": "",
+                "type": "query",
+                "description": "Include display info in the response."
+              },
+              {
+                "name": "includePeople",
+                "value": "",
+                "type": "query",
+                "description": "Include people information in the response."
+              },
+              {
+                "name": "includeResponses",
+                "value": "",
+                "type": "query",
+                "description": "Include additional criteria responses in the response."
+              },
+              {
+                "name": "includeQuestionIds",
+                "value": "",
+                "type": "query",
+                "description": "Include question ids in the response."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get information about a specific coding evaluation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

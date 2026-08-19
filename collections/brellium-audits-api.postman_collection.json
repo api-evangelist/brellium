@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "121428e4-4fe8-4739-afc4-eb12c44e6833",
+      "name": "Audits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "981752b1-c962-4718-bbd7-bb699b057e7e",
+          "name": "List audits based on filter criteria",
+          "request": {
+            "name": "List audits based on filter criteria",
+            "description": {},
+            "url": {
+              "path": [
+                "audits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verbose\": \"<string>\",\n  \"status\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"set_id\": \"<string>\",\n  \"documents\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionStartDate\": \"<dateTime>\",\n  \"sessionEndDate\": \"<dateTime>\",\n  \"auditStartDate\": \"<dateTime>\",\n  \"auditEndDate\": \"<dateTime>\",\n  \"scoreLowerBound\": \"<float>\",\n  \"scoreUpperBound\": \"<float>\",\n  \"lastUpdatedStartDate\": \"<dateTime>\",\n  \"lastUpdatedEndDate\": \"<dateTime>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"includeDisplayInfo\": \"<string>\",\n  \"includePeople\": \"<string>\",\n  \"includeTestAudits\": \"<string>\",\n  \"includeQuestionIds\": \"<string>\",\n  \"includeLastReviewed\": \"<string>\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c89c6d9d-6526-4ff5-afca-89559fd707f7",
+              "name": "List of audits. The structure of the returned audits depends on the 'verbose', 'includeDisplayInfo', and 'includePeople' flags in the request. If 'verbose' is true, full audit details are returned (Audit schema). If 'verbose' is false, a reduced audit object is returned (AuditInfo schema). If 'includeDisplayInfo' and 'includePeople' are true, the returned audits will include display info and people respectively. Both 'verbose' and one of the other two flags can be used together.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verbose\": \"<string>\",\n  \"status\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"set_id\": \"<string>\",\n  \"documents\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sessionStartDate\": \"<dateTime>\",\n  \"sessionEndDate\": \"<dateTime>\",\n  \"auditStartDate\": \"<dateTime>\",\n  \"auditEndDate\": \"<dateTime>\",\n  \"scoreLowerBound\": \"<float>\",\n  \"scoreUpperBound\": \"<float>\",\n  \"lastUpdatedStartDate\": \"<dateTime>\",\n  \"lastUpdatedEndDate\": \"<dateTime>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"includeDisplayInfo\": \"<string>\",\n  \"includePeople\": \"<string>\",\n  \"includeTestAudits\": \"<string>\",\n  \"includeQuestionIds\": \"<string>\",\n  \"includeLastReviewed\": \"<string>\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"audit_id\": \"string\",\n    \"status\": \"todo\",\n    \"score\": 9112.82541771237,\n    \"flags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"reviewed_by\": \"string\",\n    \"set_id\": \"string\",\n    \"timestamp\": \"1974-06-18T04:51:04.765Z\",\n    \"responses\": [\n      {\n        \"query\": \"string\",\n        \"answer\": \"N/A\",\n        \"context\": \"string\",\n        \"response_id\": \"string\"\n      },\n      {\n        \"query\": \"string\",\n        \"answer\": \"No\",\n        \"context\": \"string\",\n        \"response_id\": \"string\"\n      }\n    ],\n    \"display_info\": [\n      {\n        \"key\": \"episode_id\",\n        \"order\": 1,\n        \"title\": \"Episode ID\",\n        \"value\": \"12341234\",\n        \"format\": \"text\",\n        \"filter_type\": \"search\"\n      },\n      {\n        \"key\": \"episode_id\",\n        \"order\": 1,\n        \"title\": \"Episode ID\",\n        \"value\": \"12341234\",\n        \"format\": \"text\",\n        \"filter_type\": \"search\"\n      }\n    ],\n    \"people\": [\n      {\n        \"key\": \"RN\",\n        \"order\": 1,\n        \"title\": \"RN\",\n        \"value\": \"John Doe RN\",\n        \"format\": \"text\",\n        \"filter_type\": \"people\"\n      },\n      {\n        \"key\": \"RN\",\n        \"order\": 1,\n        \"title\": \"RN\",\n        \"value\": \"John Doe RN\",\n        \"format\": \"text\",\n        \"filter_type\": \"people\"\n      }\n    ],\n    \"documents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"people_emails\": [\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      }\n    ]\n  },\n  {\n    \"audit_id\": \"string\",\n    \"status\": \"todo\",\n    \"score\": 5956.0546313937175,\n    \"flags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"reviewed_by\": \"string\",\n    \"set_id\": \"string\",\n    \"timestamp\": \"1996-10-08T20:30:13.276Z\",\n    \"responses\": [\n      {\n        \"query\": \"string\",\n        \"answer\": \"N/A\",\n        \"context\": \"string\",\n        \"response_id\": \"string\"\n      },\n      {\n        \"query\": \"string\",\n        \"answer\": \"N/A\",\n        \"context\": \"string\",\n        \"response_id\": \"string\"\n      }\n    ],\n    \"display_info\": [\n      {\n        \"key\": \"episode_id\",\n        \"order\": 1,\n        \"title\": \"Episode ID\",\n        \"value\": \"12341234\",\n        \"format\": \"text\",\n        \"filter_type\": \"search\"\n      },\n      {\n        \"key\": \"episode_id\",\n        \"order\": 1,\n        \"title\": \"Episode ID\",\n        \"value\": \"12341234\",\n        \"format\": \"text\",\n        \"filter_type\": \"search\"\n      }\n    ],\n    \"people\": [\n      {\n        \"key\": \"RN\",\n        \"order\": 1,\n        \"title\": \"RN\",\n        \"value\": \"John Doe RN\",\n        \"format\": \"text\",\n        \"filter_type\": \"people\"\n      },\n      {\n        \"key\": \"RN\",\n        \"order\": 1,\n        \"title\": \"RN\",\n        \"value\": \"John Doe RN\",\n        \"format\": \"text\",\n        \"filter_type\": \"people\"\n      }\n    ],\n    \"documents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"people_emails\": [\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      },\n      {\n        \"title\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a03a9712-a609-400f-a13d-537536709da7",
+          "name": "Get information about a specific audit",
+          "request": {
+            "name": "Get information about a specific audit",
+            "description": {},
+            "url": {
+              "path": [
+                "audits",
+                ":audit_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDisplayInfo",
+                  "value": "<string>",
+                  "description": "Include display info in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "includePeople",
+                  "value": "<string>",
+                  "description": "Include people information in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeQuestionIds",
+                  "value": "<string>",
+                  "description": "Include question ids in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeLastReviewed",
+                  "value": "<string>",
+                  "description": "Include last reviewed timestamp in the response - N/A if never reviewed."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "audit_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c9a87a30-055a-46dd-8668-b6814b49c459",
+              "name": "Audit information, optionally including responses, display info, and people.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audits",
+                    ":audit_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDisplayInfo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includePeople",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeQuestionIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeLastReviewed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "audit_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"audit_id\": \"string\",\n  \"status\": \"todo\",\n  \"score\": 6036.502089142043,\n  \"flags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"reviewed_by\": \"string\",\n  \"set_id\": \"string\",\n  \"timestamp\": \"1994-10-20T18:44:03.640Z\",\n  \"responses\": [\n    {\n      \"query\": \"string\",\n      \"answer\": \"N/A\",\n      \"context\": \"string\",\n      \"response_id\": \"string\"\n    },\n    {\n      \"query\": \"string\",\n      \"answer\": \"Yes\",\n      \"context\": \"string\",\n      \"response_id\": \"string\"\n    }\n  ],\n  \"display_info\": [\n    {\n      \"key\": \"episode_id\",\n      \"order\": 1,\n      \"title\": \"Episode ID\",\n      \"value\": \"12341234\",\n      \"format\": \"text\",\n      \"filter_type\": \"search\"\n    },\n    {\n      \"key\": \"episode_id\",\n      \"order\": 1,\n      \"title\": \"Episode ID\",\n      \"value\": \"12341234\",\n      \"format\": \"text\",\n      \"filter_type\": \"search\"\n    }\n  ],\n  \"people\": [\n    {\n      \"key\": \"RN\",\n      \"order\": 1,\n      \"title\": \"RN\",\n      \"value\": \"John Doe RN\",\n      \"format\": \"text\",\n      \"filter_type\": \"people\"\n    },\n    {\n      \"key\": \"RN\",\n      \"order\": 1,\n      \"title\": \"RN\",\n      \"value\": \"John Doe RN\",\n      \"format\": \"text\",\n      \"filter_type\": \"people\"\n    }\n  ],\n  \"documents\": [\n    \"string\",\n    \"string\"\n  ],\n  \"people_emails\": [\n    {\n      \"title\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brellium.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a65faf1-47b3-45e4-a397-f211744857be",
+    "name": "Brellium Audits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for base Brellium functionality.\n\nContact Support:\n Name: Brellium Team\n Email: support@brellium.com",
+      "type": "text/plain"
+    }
+  }
+}
