@@ -41,6 +41,15 @@ tags:
 - Audit
 - Behavioral Health
 - Digital Health
+tags_raw:
+- Company
+- Healthcare
+- Clinical Compliance
+- Clinical Documentation
+- Medical Coding
+- Audit
+- Behavioral Health
+- Digital Health
 - API
 apis:
 - aid: brellium:brellium-audits-api
@@ -65,6 +74,8 @@ apis:
   humanURL: https://brellium-ai.readme.io/docs/getting-started
   baseURL: https://api.brellium.com/v1
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -177,6 +188,8 @@ apis:
   humanURL: https://brellium-ai.readme.io/docs/getting-started
   baseURL: https://api.brellium.com/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
