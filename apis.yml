@@ -218,6 +218,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/brellium-capability-edges.yml
+  name: Brellium Business Capability Map
 - type: AgenticAccess
   url: agentic-access/brellium-agentic-access.yml
 - type: DomainSecurity

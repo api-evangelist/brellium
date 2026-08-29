@@ -1,0 +1,37 @@
+slug: brellium
+provider: Brellium
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Coding
+  spec_file: brellium-coding-api-openapi.yml
+  capability_id: BC-2870.20
+  capability_id_l1: BC-2870
+  capability_name: Medical Coding Management
+  confidence: 0.72
+  evidence: POST /coding "List coding evaluations based on filter criteria"; schemas CodingEvalFilter,
+    CodingEval
+  reason: Coding evaluations assess medical codes on encounters against billing requirements, matching
+    medical coding production and compliance auditing within the revenue cycle. Some ambiguity versus
+    HIM coding operations, hence not higher.
+- tag: Update Audits Flags
+  spec_file: brellium-update-audits-flags-api-openapi.yml
+  capability_id: BC-2830.50
+  capability_id_l1: BC-2830
+  capability_name: Clinical Documentation Improvement
+  confidence: 0.7
+  evidence: 'POST /update-audits-flags — Update flags for a list of audits; vendor: "clinical AI audits
+    100% of a provider''s clinical documentation and medical coding across every patient visit"'
+  reason: Operation mutates the disposition of documentation-audit flags raised against clinical notes,
+    which is the review/query loop of Clinical Documentation Improvement. Some ambiguity with medical
+    coding compliance auditing (BC-2870.20), hence moderate confidence.
