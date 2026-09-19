@@ -71,6 +71,8 @@ apis:
   humanURL: https://brellium-ai.readme.io/docs/getting-started
   baseURL: https://api.brellium.com/v1
   tags:
+  - Audit
+  tags_raw:
   - Audits
   properties:
   - type: OpenAPI
