@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 2
 edges:
 - tag: Coding
   spec_file: brellium-coding-api-openapi.yml
@@ -24,3 +24,15 @@ edges:
   reason: The operations expose evaluations of medical coding on patient visits, matching Medical Coding
     Management which explicitly covers 'coding production and compliance auditing'. Some residual ambiguity
     with BC-2900.20 Coding Operations, hence 0.75.
+- tag: Update Audits Flags
+  spec_file: brellium-update-audits-flags-api-openapi.yml
+  capability_id: BC-2830.50
+  capability_id_l1: BC-2830
+  capability_name: Clinical Documentation Improvement
+  confidence: 0.7
+  evidence: 'POST /update-audits-flags — Update flags for a list of audits; vendor: "clinical AI audits
+    100% of a provider''s clinical documentation and medical coding across every patient visit"'
+  reason: Operation mutates the disposition of documentation-audit flags raised against clinical notes,
+    which is the review/query loop of Clinical Documentation Improvement. Some ambiguity with medical
+    coding compliance auditing (BC-2870.20), hence moderate confidence.
+  recovered_from: healthcare-vertical-edges.json
