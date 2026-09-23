@@ -1,15 +1,7 @@
 {
   "provider": "brellium",
   "sources": [
-    "brellium-audits-api-openapi.yml",
-    "brellium-auth-api-openapi.yml",
-    "brellium-coding-api-openapi.yml",
-    "brellium-documents-api-openapi.yml",
-    "brellium-documents-multiple-api-openapi.yml",
-    "brellium-link-providers-api-openapi.yml",
-    "brellium-question-sets-api-openapi.yml",
-    "brellium-update-audits-flags-api-openapi.yml",
-    "brellium-users-api-openapi.yml"
+    "_original/brellium-openapi-original.json"
   ],
   "outputs": [
     "brellium-audits-api-openapi.yml",
@@ -25,6 +17,46 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "brellium-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "brellium-openapi-original.json: tagged paths POST /auth -> Auth",
+    "brellium-openapi-original.json: tagged paths POST /documents -> Documents",
+    "brellium-openapi-original.json: tagged paths POST /documents/upload-url -> Documents",
+    "brellium-openapi-original.json: tagged paths POST /documents-multiple -> Documents Multiple",
+    "brellium-openapi-original.json: tagged paths GET /documents/{document_id} -> Documents",
+    "brellium-openapi-original.json: tagged paths POST /audits -> Audits",
+    "brellium-openapi-original.json: tagged paths GET /audits/{audit_id} -> Audits",
+    "brellium-openapi-original.json: tagged paths POST /coding -> Coding",
+    "brellium-openapi-original.json: tagged paths GET /coding/{coding_eval_id} -> Coding",
+    "brellium-openapi-original.json: tagged paths POST /users -> Users",
+    "brellium-openapi-original.json: tagged paths GET /users -> Users",
+    "brellium-openapi-original.json: tagged paths GET /users/{user_id} -> Users",
+    "brellium-openapi-original.json: tagged paths POST /users/{user_id} -> Users",
+    "brellium-openapi-original.json: tagged paths DELETE /users/{user_id} -> Users",
+    "brellium-openapi-original.json: tagged paths GET /question-sets -> Question Sets",
+    "brellium-openapi-original.json: tagged paths POST /update-audits-flags -> Update Audits Flags",
+    "brellium-openapi-original.json: tagged paths POST /link-providers -> Link Providers",
+    "brellium-openapi-original.json: declared missing tag: Audits",
+    "brellium-openapi-original.json: declared missing tag: Auth",
+    "brellium-openapi-original.json: declared missing tag: Coding",
+    "brellium-openapi-original.json: declared missing tag: Documents",
+    "brellium-openapi-original.json: declared missing tag: Documents Multiple",
+    "brellium-openapi-original.json: declared missing tag: Link Providers",
+    "brellium-openapi-original.json: declared missing tag: Question Sets",
+    "brellium-openapi-original.json: declared missing tag: Update Audits Flags",
+    "brellium-openapi-original.json: declared missing tag: Users",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "brellium-audits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-coding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-documents-multiple-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-link-providers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-question-sets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-update-audits-flags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brellium-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
   title: Brellium Audits API
@@ -46,6 +46,8 @@ paths:
       - bearerAuth: []
       tags:
       - Audits
+      operationId: postAudits
+      x-operation-id-source: derived
   /audits/{audit_id}:
     get:
       summary: Get information about a specific audit
@@ -103,6 +105,8 @@ paths:
       - bearerAuth: []
       tags:
       - Audits
+      operationId: getAuditsByAuditId
+      x-operation-id-source: derived
 components:
   schemas:
     AuditInfo:
@@ -124,133 +128,6 @@ components:
           type: string
           format: date-time
           description: When the audit was created.
-    AuditFilter:
-      type: object
-      properties:
-        verbose:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          description: Controls the level of detail in the response.
-          nullable: true
-        status:
-          type: array
-          items:
-            type: string
-            enum:
-            - todo
-            - processing
-            - in_progress
-            - error
-            - complete
-          description: Audit statuses to include.
-          nullable: true
-        set_id:
-          type: string
-          description: Question set id.
-        documents:
-          type: array
-          items:
-            type: string
-          description: Document ids that the audits were made for.
-          nullable: true
-        sessionStartDate:
-          type: string
-          format: date-time
-          description: Start date of the session in ISO format.
-          nullable: true
-        sessionEndDate:
-          type: string
-          format: date-time
-          description: End date of the session in ISO format.
-          nullable: true
-        auditStartDate:
-          type: string
-          format: date-time
-          description: Start date of the audit in ISO format.
-          nullable: true
-        auditEndDate:
-          type: string
-          format: date-time
-          description: End date of the audit in ISO format.
-          nullable: true
-        scoreLowerBound:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 100
-          description: Lower bound for the audit score.
-          nullable: true
-        scoreUpperBound:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 100
-          description: Upper bound for the audit score.
-          nullable: true
-        lastUpdatedStartDate:
-          type: string
-          format: date-time
-          description: Start date of the audit's latest update in ISO format.
-          nullable: true
-        lastUpdatedEndDate:
-          type: string
-          format: date-time
-          description: End date of the audit's latest update in ISO format.
-          nullable: true
-        page:
-          type: integer
-          minimum: 1
-          description: Page number.
-          nullable: true
-        pageSize:
-          type: integer
-          minimum: 1
-          maximum: 1000
-          description: Number of audits per page.
-          nullable: true
-        includeDisplayInfo:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          description: Include display info.
-          nullable: true
-        includePeople:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          description: Include people.
-          nullable: true
-        includeTestAudits:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          description: If true only test audits are returned, if false or null only non-test audits are returned.
-          nullable: true
-        includeQuestionIds:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          description: Include question ids in the response.
-          nullable: true
-        includeLastReviewed:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          description: Include last reviewed timestamp in the response - N/A if never reviewed.
-          nullable: true
-        flags:
-          type: array
-          items:
-            type: string
-          description: Flags to filter by.
-          nullable: true
     Audit:
       type: object
       properties:
@@ -466,6 +343,152 @@ components:
                 type: string
                 description: The person's email, if found.
           description: The emails of the people in the audit.
+    AuditFilter:
+      type: object
+      properties:
+        verbose:
+          type:
+          - string
+          - 'null'
+          enum:
+          - 'true'
+          - 'false'
+          description: Controls the level of detail in the response.
+        status:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            enum:
+            - todo
+            - processing
+            - in_progress
+            - error
+            - complete
+          description: Audit statuses to include.
+        set_id:
+          type: string
+          description: Question set id.
+        documents:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Document ids that the audits were made for.
+        sessionStartDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Start date of the session in ISO format.
+        sessionEndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: End date of the session in ISO format.
+        auditStartDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Start date of the audit in ISO format.
+        auditEndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: End date of the audit in ISO format.
+        scoreLowerBound:
+          type:
+          - number
+          - 'null'
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Lower bound for the audit score.
+        scoreUpperBound:
+          type:
+          - number
+          - 'null'
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Upper bound for the audit score.
+        lastUpdatedStartDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Start date of the audit's latest update in ISO format.
+        lastUpdatedEndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: End date of the audit's latest update in ISO format.
+        page:
+          type:
+          - integer
+          - 'null'
+          minimum: 1
+          description: Page number.
+        pageSize:
+          type:
+          - integer
+          - 'null'
+          minimum: 1
+          maximum: 1000
+          description: Number of audits per page.
+        includeDisplayInfo:
+          type:
+          - string
+          - 'null'
+          enum:
+          - 'true'
+          - 'false'
+          description: Include display info.
+        includePeople:
+          type:
+          - string
+          - 'null'
+          enum:
+          - 'true'
+          - 'false'
+          description: Include people.
+        includeTestAudits:
+          type:
+          - string
+          - 'null'
+          enum:
+          - 'true'
+          - 'false'
+          description: If true only test audits are returned, if false or null only non-test audits are returned.
+        includeQuestionIds:
+          type:
+          - string
+          - 'null'
+          enum:
+          - 'true'
+          - 'false'
+          description: Include question ids in the response.
+        includeLastReviewed:
+          type:
+          - string
+          - 'null'
+          enum:
+          - 'true'
+          - 'false'
+          description: Include last reviewed timestamp in the response - N/A if never reviewed.
+        flags:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Flags to filter by.
   securitySchemes:
     bearerAuth:
       type: http

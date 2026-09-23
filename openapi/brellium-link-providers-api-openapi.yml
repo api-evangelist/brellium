@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Brellium Audits Link Providers API
+  title: Brellium Link Providers API
   description: API for base Brellium functionality.
   termsOfService: https://brellium.com/terms
   contact:
@@ -43,6 +43,8 @@ paths:
       - bearerAuth: []
       tags:
       - Link Providers
+      operationId: postLinkProviders
+      x-operation-id-source: derived
 components:
   schemas:
     ProviderLinkingResult:
