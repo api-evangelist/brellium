@@ -95,6 +95,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    UploadUrlResponse:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: ID of the uploaded document.
+        presigned_url:
+          type: string
+          description: Short-lived URL to upload the file to.
+      required:
+      - document_id
+      - presigned_url
     UploadUrlRequest:
       type: object
       properties:
@@ -151,18 +163,6 @@ components:
           description: Document id of uploaded document.
       required:
       - document_id
-    UploadUrlResponse:
-      type: object
-      properties:
-        document_id:
-          type: string
-          description: ID of the uploaded document.
-        presigned_url:
-          type: string
-          description: Short-lived URL to upload the file to.
-      required:
-      - document_id
-      - presigned_url
   securitySchemes:
     bearerAuth:
       type: http

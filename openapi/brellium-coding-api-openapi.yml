@@ -109,6 +109,89 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    CodingEvalInfo:
+      type: object
+      properties:
+        coding_eval_id:
+          type: string
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        em_eval:
+          oneOf:
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              base_code_aligned:
+                type: boolean
+              add_on_codes_aligned:
+                type: boolean
+              problems_level:
+                type: string
+              data_level:
+                type: string
+              risk_level:
+                type: string
+              mdm_level:
+                type: string
+              time_based:
+                type: boolean
+              encounter_time_minutes:
+                type: integer
+              upcoded:
+                type: boolean
+              downcoded:
+                type: boolean
+              submitted_base_code:
+                type: string
+              submitted_add_on_codes:
+                type: array
+                items:
+                  type: string
+              recommended_base_code:
+                type: string
+              recommended_add_on_codes:
+                type: array
+                items:
+                  type: string
+            title: Codable
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              coding_status:
+                type: string
+                enum:
+                - uncodable
+                description: Present only when coding module is unable to code the chart. Absent for normally coded charts.
+              uncodable_reason:
+                type: string
+                enum:
+                - no_problem_identified
+                - visit_type_indeterminate
+                description: Only present when coding_status is 'uncodable'. 'no_problem_identified' = documentation lacks at least one addressable medical problem required to meet minimum code requirements. 'visit_type_indeterminate' = documentation doesn't indicate whether the patient is new or established, so a code series cannot be selected.
+              encounter_time_minutes:
+                type: integer
+            title: Uncodable
+        icd_eval:
+          type: object
+          properties:
+            icd_eval_id:
+              type: string
+            icd_codes:
+              type: array
+              items:
+                type: object
+                properties:
+                  icd_code:
+                    type: string
+                  hcc_code:
+                    type: string
+                  hcc_model_name:
+                    type: string
     CodingEvalWithDisplayInfoPeopleResponses:
       type: object
       properties:
@@ -340,89 +423,6 @@ components:
                 type: string
               email:
                 type: string
-    CodingEvalInfo:
-      type: object
-      properties:
-        coding_eval_id:
-          type: string
-        status:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        em_eval:
-          oneOf:
-          - type: object
-            properties:
-              em_eval_id:
-                type: string
-              base_code_aligned:
-                type: boolean
-              add_on_codes_aligned:
-                type: boolean
-              problems_level:
-                type: string
-              data_level:
-                type: string
-              risk_level:
-                type: string
-              mdm_level:
-                type: string
-              time_based:
-                type: boolean
-              encounter_time_minutes:
-                type: integer
-              upcoded:
-                type: boolean
-              downcoded:
-                type: boolean
-              submitted_base_code:
-                type: string
-              submitted_add_on_codes:
-                type: array
-                items:
-                  type: string
-              recommended_base_code:
-                type: string
-              recommended_add_on_codes:
-                type: array
-                items:
-                  type: string
-            title: Codable
-          - type: object
-            properties:
-              em_eval_id:
-                type: string
-              coding_status:
-                type: string
-                enum:
-                - uncodable
-                description: Present only when coding module is unable to code the chart. Absent for normally coded charts.
-              uncodable_reason:
-                type: string
-                enum:
-                - no_problem_identified
-                - visit_type_indeterminate
-                description: Only present when coding_status is 'uncodable'. 'no_problem_identified' = documentation lacks at least one addressable medical problem required to meet minimum code requirements. 'visit_type_indeterminate' = documentation doesn't indicate whether the patient is new or established, so a code series cannot be selected.
-              encounter_time_minutes:
-                type: integer
-            title: Uncodable
-        icd_eval:
-          type: object
-          properties:
-            icd_eval_id:
-              type: string
-            icd_codes:
-              type: array
-              items:
-                type: object
-                properties:
-                  icd_code:
-                    type: string
-                  hcc_code:
-                    type: string
-                  hcc_model_name:
-                    type: string
     CodingEval:
       type: object
       properties:
