@@ -192,6 +192,176 @@ components:
                     type: string
                   hcc_model_name:
                     type: string
+    CodingEval:
+      type: object
+      properties:
+        coding_eval_id:
+          type: string
+        status:
+          type: string
+        reviewed_by:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        em_eval:
+          oneOf:
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              score:
+                type: number
+                format: float
+              flags:
+                type: array
+                items:
+                  type: string
+              base_code_aligned:
+                type: boolean
+              add_on_codes_aligned:
+                type: boolean
+              problems_level:
+                type: string
+              data_level:
+                type: string
+              risk_level:
+                type: string
+              mdm_level:
+                type: string
+              time_based:
+                type: boolean
+              encounter_time_minutes:
+                type: integer
+              upcoded:
+                type: boolean
+              downcoded:
+                type: boolean
+              submitted_base_code:
+                type: string
+              submitted_add_on_codes:
+                type: array
+                items:
+                  type: string
+              recommended_base_code:
+                type: string
+              recommended_add_on_codes:
+                type: array
+                items:
+                  type: string
+              problems:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    problem_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+              risk:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    risk_id:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+            title: Codable
+          - type: object
+            properties:
+              em_eval_id:
+                type: string
+              coding_status:
+                type: string
+                enum:
+                - uncodable
+                description: Present only when coding module is unable to code the chart. Absent for normally coded charts.
+              uncodable_reason:
+                type: string
+                enum:
+                - no_problem_identified
+                - visit_type_indeterminate
+                description: Only present when coding_status is 'uncodable'. 'no_problem_identified' = documentation lacks at least one addressable medical problem required to meet minimum code requirements. 'visit_type_indeterminate' = documentation doesn't indicate whether the patient is new or established, so a code series cannot be selected.
+              encounter_time_minutes:
+                type: integer
+              flags:
+                type: array
+                items:
+                  type: string
+            title: Uncodable
+        icd_eval:
+          type: object
+          properties:
+            icd_eval_id:
+              type: string
+            score:
+              type: number
+              format: float
+            flags:
+              type: array
+              items:
+                type: string
+            icd_codes:
+              type: array
+              items:
+                type: object
+                properties:
+                  icd_code:
+                    type: string
+                  hcc_code:
+                    type: string
+                  hcc_model_name:
+                    type: string
+                  criteria:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        icd_criteria_id:
+                          type: string
+                        criteria_name:
+                          type: string
+                        criteria_context:
+                          type: string
+                        is_criteria_met:
+                          type: boolean
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              response_id:
+                type: string
+              query:
+                type: string
+              answer:
+                type: string
+              context:
+                type: string
+            required:
+            - query
+            - answer
+            - context
+        documents:
+          type: array
+          items:
+            type: string
     CodingEvalWithDisplayInfoPeopleResponses:
       type: object
       properties:
@@ -423,176 +593,6 @@ components:
                 type: string
               email:
                 type: string
-    CodingEval:
-      type: object
-      properties:
-        coding_eval_id:
-          type: string
-        status:
-          type: string
-        reviewed_by:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        em_eval:
-          oneOf:
-          - type: object
-            properties:
-              em_eval_id:
-                type: string
-              score:
-                type: number
-                format: float
-              flags:
-                type: array
-                items:
-                  type: string
-              base_code_aligned:
-                type: boolean
-              add_on_codes_aligned:
-                type: boolean
-              problems_level:
-                type: string
-              data_level:
-                type: string
-              risk_level:
-                type: string
-              mdm_level:
-                type: string
-              time_based:
-                type: boolean
-              encounter_time_minutes:
-                type: integer
-              upcoded:
-                type: boolean
-              downcoded:
-                type: boolean
-              submitted_base_code:
-                type: string
-              submitted_add_on_codes:
-                type: array
-                items:
-                  type: string
-              recommended_base_code:
-                type: string
-              recommended_add_on_codes:
-                type: array
-                items:
-                  type: string
-              problems:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    problem_id:
-                      type: string
-                    category:
-                      type: string
-                    description:
-                      type: string
-              data:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    data_id:
-                      type: string
-                    category:
-                      type: string
-                    description:
-                      type: string
-              risk:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    risk_id:
-                      type: string
-                    category:
-                      type: string
-                    description:
-                      type: string
-            title: Codable
-          - type: object
-            properties:
-              em_eval_id:
-                type: string
-              coding_status:
-                type: string
-                enum:
-                - uncodable
-                description: Present only when coding module is unable to code the chart. Absent for normally coded charts.
-              uncodable_reason:
-                type: string
-                enum:
-                - no_problem_identified
-                - visit_type_indeterminate
-                description: Only present when coding_status is 'uncodable'. 'no_problem_identified' = documentation lacks at least one addressable medical problem required to meet minimum code requirements. 'visit_type_indeterminate' = documentation doesn't indicate whether the patient is new or established, so a code series cannot be selected.
-              encounter_time_minutes:
-                type: integer
-              flags:
-                type: array
-                items:
-                  type: string
-            title: Uncodable
-        icd_eval:
-          type: object
-          properties:
-            icd_eval_id:
-              type: string
-            score:
-              type: number
-              format: float
-            flags:
-              type: array
-              items:
-                type: string
-            icd_codes:
-              type: array
-              items:
-                type: object
-                properties:
-                  icd_code:
-                    type: string
-                  hcc_code:
-                    type: string
-                  hcc_model_name:
-                    type: string
-                  criteria:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        icd_criteria_id:
-                          type: string
-                        criteria_name:
-                          type: string
-                        criteria_context:
-                          type: string
-                        is_criteria_met:
-                          type: boolean
-        responses:
-          type: array
-          items:
-            type: object
-            properties:
-              response_id:
-                type: string
-              query:
-                type: string
-              answer:
-                type: string
-              context:
-                type: string
-            required:
-            - query
-            - answer
-            - context
-        documents:
-          type: array
-          items:
-            type: string
     CodingEvalFilter:
       type: object
       properties:

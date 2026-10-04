@@ -109,6 +109,181 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    AuditInfo:
+      type: object
+      properties:
+        audit_id:
+          type: string
+          description: Audit id.
+        status:
+          type: string
+          enum:
+          - todo
+          - processing
+          - in_progress
+          - error
+          - complete
+          description: Current status of the audit.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the audit was created.
+    AuditWithDisplayAndPeople:
+      type: object
+      properties:
+        audit_id:
+          type: string
+          description: Audit id.
+        status:
+          type: string
+          enum:
+          - todo
+          - in_progress
+          - error
+          - complete
+          description: The status of the audit.
+        score:
+          type: number
+          format: float
+          description: The score of the audit.
+        flags:
+          type: array
+          items:
+            type: string
+          description: The flags on the audit.
+        reviewed_by:
+          type: string
+          description: The email of the reviewer.
+        set_id:
+          type: string
+          description: Id of question set used for the audit.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the audit was created.
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              response_id:
+                type: string
+                description: Response id.
+              query:
+                type: string
+                description: The criteria question.
+              answer:
+                type: string
+                enum:
+                - 'Yes'
+                - N/A
+                - 'No'
+                description: The answer to the question.
+              context:
+                type: string
+                description: The context for the answer.
+            required:
+            - query
+            - answer
+            - context
+          description: The responses the audit is comprised of.
+        display_info:
+          type: array
+          items:
+            type: object
+            description: Additional display information for the audit.
+            properties:
+              key:
+                type: string
+                description: Internal key for the display info item.
+              order:
+                type: integer
+                description: Order in which the item should be displayed.
+              title:
+                type: string
+                description: Title of the display info item.
+              value:
+                type: string
+                description: Value of the display info item.
+              format:
+                type: string
+                description: Format of the value (e.g., 'text').
+              filter_type:
+                type: string
+                description: Type of filter to be applied (e.g., 'search').
+            required:
+            - key
+            - order
+            - title
+            - value
+            - format
+            - filter_type
+            example:
+              key: episode_id
+              order: 1
+              title: Episode ID
+              value: '12341234'
+              format: text
+              filter_type: search
+        people:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Internal key for the display info item.
+              order:
+                type: integer
+                description: Order in which the person should be displayed.
+              title:
+                type: string
+                description: Title or role of the person.
+              value:
+                type: string
+                description: Name or identifier of the person.
+              format:
+                type: string
+                description: Format of the value (e.g., 'text').
+              filter_type:
+                type: string
+                description: Type of filter to be applied (e.g., 'people').
+            required:
+            - key
+            - order
+            - title
+            - value
+            - format
+            - filter_type
+            example:
+              key: RN
+              order: 1
+              title: RN
+              value: John Doe RN
+              format: text
+              filter_type: people
+          description: Information about people associated with the audit.
+        documents:
+          type: array
+          items:
+            type: string
+            description: Document id.
+          description: The documents in the audit.
+        people_emails:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                description: The person's title or role.
+              name:
+                type: string
+                description: The person's name.
+              email:
+                type: string
+                description: The person's email, if found.
+          description: The emails of the people in the audit.
     AuditFilter:
       type: object
       properties:
@@ -314,181 +489,6 @@ components:
             - answer
             - context
           description: The responses the audit is comprised of.
-    AuditInfo:
-      type: object
-      properties:
-        audit_id:
-          type: string
-          description: Audit id.
-        status:
-          type: string
-          enum:
-          - todo
-          - processing
-          - in_progress
-          - error
-          - complete
-          description: Current status of the audit.
-        timestamp:
-          type: string
-          format: date-time
-          description: When the audit was created.
-    AuditWithDisplayAndPeople:
-      type: object
-      properties:
-        audit_id:
-          type: string
-          description: Audit id.
-        status:
-          type: string
-          enum:
-          - todo
-          - in_progress
-          - error
-          - complete
-          description: The status of the audit.
-        score:
-          type: number
-          format: float
-          description: The score of the audit.
-        flags:
-          type: array
-          items:
-            type: string
-          description: The flags on the audit.
-        reviewed_by:
-          type: string
-          description: The email of the reviewer.
-        set_id:
-          type: string
-          description: Id of question set used for the audit.
-        timestamp:
-          type: string
-          format: date-time
-          description: When the audit was created.
-        responses:
-          type: array
-          items:
-            type: object
-            properties:
-              response_id:
-                type: string
-                description: Response id.
-              query:
-                type: string
-                description: The criteria question.
-              answer:
-                type: string
-                enum:
-                - 'Yes'
-                - N/A
-                - 'No'
-                description: The answer to the question.
-              context:
-                type: string
-                description: The context for the answer.
-            required:
-            - query
-            - answer
-            - context
-          description: The responses the audit is comprised of.
-        display_info:
-          type: array
-          items:
-            type: object
-            description: Additional display information for the audit.
-            properties:
-              key:
-                type: string
-                description: Internal key for the display info item.
-              order:
-                type: integer
-                description: Order in which the item should be displayed.
-              title:
-                type: string
-                description: Title of the display info item.
-              value:
-                type: string
-                description: Value of the display info item.
-              format:
-                type: string
-                description: Format of the value (e.g., 'text').
-              filter_type:
-                type: string
-                description: Type of filter to be applied (e.g., 'search').
-            required:
-            - key
-            - order
-            - title
-            - value
-            - format
-            - filter_type
-            example:
-              key: episode_id
-              order: 1
-              title: Episode ID
-              value: '12341234'
-              format: text
-              filter_type: search
-        people:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type: string
-                description: Internal key for the display info item.
-              order:
-                type: integer
-                description: Order in which the person should be displayed.
-              title:
-                type: string
-                description: Title or role of the person.
-              value:
-                type: string
-                description: Name or identifier of the person.
-              format:
-                type: string
-                description: Format of the value (e.g., 'text').
-              filter_type:
-                type: string
-                description: Type of filter to be applied (e.g., 'people').
-            required:
-            - key
-            - order
-            - title
-            - value
-            - format
-            - filter_type
-            example:
-              key: RN
-              order: 1
-              title: RN
-              value: John Doe RN
-              format: text
-              filter_type: people
-          description: Information about people associated with the audit.
-        documents:
-          type: array
-          items:
-            type: string
-            description: Document id.
-          description: The documents in the audit.
-        people_emails:
-          type: array
-          items:
-            type: object
-            properties:
-              title:
-                type: string
-                description: The person's title or role.
-              name:
-                type: string
-                description: The person's name.
-              email:
-                type: string
-                description: The person's email, if found.
-          description: The emails of the people in the audit.
   securitySchemes:
     bearerAuth:
       type: http
