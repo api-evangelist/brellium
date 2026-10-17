@@ -109,25 +109,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AuditInfo:
-      type: object
-      properties:
-        audit_id:
-          type: string
-          description: Audit id.
-        status:
-          type: string
-          enum:
-          - todo
-          - processing
-          - in_progress
-          - error
-          - complete
-          description: Current status of the audit.
-        timestamp:
-          type: string
-          format: date-time
-          description: When the audit was created.
     AuditWithDisplayAndPeople:
       type: object
       properties:
@@ -284,6 +265,84 @@ components:
                 type: string
                 description: The person's email, if found.
           description: The emails of the people in the audit.
+    AuditInfo:
+      type: object
+      properties:
+        audit_id:
+          type: string
+          description: Audit id.
+        status:
+          type: string
+          enum:
+          - todo
+          - processing
+          - in_progress
+          - error
+          - complete
+          description: Current status of the audit.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the audit was created.
+    Audit:
+      type: object
+      properties:
+        audit_id:
+          type: string
+          description: Audit id.
+        status:
+          type: string
+          enum:
+          - todo
+          - in_progress
+          - error
+          - complete
+          description: The status of the audit.
+        score:
+          type: number
+          format: float
+          description: The score of the audit.
+        flags:
+          type: array
+          items:
+            type: string
+          description: The flags on the audit.
+        reviewed_by:
+          type: string
+          description: The email of the reviewer.
+        set_id:
+          type: string
+          description: Id of question set used for the audit.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the audit was created.
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              response_id:
+                type: string
+                description: Response id.
+              query:
+                type: string
+                description: The criteria question.
+              answer:
+                type: string
+                enum:
+                - 'Yes'
+                - N/A
+                - 'No'
+                description: The answer to the question.
+              context:
+                type: string
+                description: The context for the answer.
+            required:
+            - query
+            - answer
+            - context
+          description: The responses the audit is comprised of.
     AuditFilter:
       type: object
       properties:
@@ -430,65 +489,6 @@ components:
           items:
             type: string
           description: Flags to filter by.
-    Audit:
-      type: object
-      properties:
-        audit_id:
-          type: string
-          description: Audit id.
-        status:
-          type: string
-          enum:
-          - todo
-          - in_progress
-          - error
-          - complete
-          description: The status of the audit.
-        score:
-          type: number
-          format: float
-          description: The score of the audit.
-        flags:
-          type: array
-          items:
-            type: string
-          description: The flags on the audit.
-        reviewed_by:
-          type: string
-          description: The email of the reviewer.
-        set_id:
-          type: string
-          description: Id of question set used for the audit.
-        timestamp:
-          type: string
-          format: date-time
-          description: When the audit was created.
-        responses:
-          type: array
-          items:
-            type: object
-            properties:
-              response_id:
-                type: string
-                description: Response id.
-              query:
-                type: string
-                description: The criteria question.
-              answer:
-                type: string
-                enum:
-                - 'Yes'
-                - N/A
-                - 'No'
-                description: The answer to the question.
-              context:
-                type: string
-                description: The context for the answer.
-            required:
-            - query
-            - answer
-            - context
-          description: The responses the audit is comprised of.
   securitySchemes:
     bearerAuth:
       type: http
