@@ -64,6 +64,140 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Brellium is a company surfaced as a portfolio company of menlo-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Brellium is an AI-powered clinical compliance platform for healthcare organizations. Its clinical AI audits 100% of a provider's clinical documentation and medical coding across every patient visit, checking notes against payor, clinical-quality, and billing requirements to catch compliance risks before they become clawbacks and to surface earned-but-unbilled revenue. It flags issues such as inaccurate MDM/E&M coding, cloned notes, and inconsistent session lengths, and gives clinical teams instant correction guidance. Brellium serves tech-enabled clinics, behavioral health, ABA, hospice, and digital-health providers, and exposes a REST API so platforms can embed chart-review and coding audits directly into their EMR or telehealth workflows.
 
-Backed by: menlo-ventures
+**Areas:** Company · Healthcare · Clinical Compliance · Clinical Documentation · Medical Coding · Audit · Behavioral Health · Digital Health
+
+## Brellium on APIs.io
+
+Everything profiled for Brellium is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/brellium/](https://apis.io/providers/brellium/)** — or go straight to one of the APIs or properties below.
+
+### APIs (9)
+
+- [Brellium Audits API](https://apis.io/apis/brellium/brellium-audits-api/) — The Audits API from Brellium — 2 operation(s) for audits.
+- [Brellium Auth API](https://apis.io/apis/brellium/brellium-auth-api/) — The Auth API from Brellium — 1 operation(s) for auth.
+- [Brellium Coding API](https://apis.io/apis/brellium/brellium-coding-api/) — The Coding API from Brellium — 2 operation(s) for coding.
+- [Brellium Documents API](https://apis.io/apis/brellium/brellium-documents-api/) — The Documents API from Brellium — 3 operation(s) for documents.
+- [Brellium Documents Multiple API](https://apis.io/apis/brellium/brellium-documents-multiple-api/) — The Documents Multiple API from Brellium — 1 operation(s) for documents multiple.
+- [Brellium Link Providers API](https://apis.io/apis/brellium/brellium-link-providers-api/) — The Link Providers API from Brellium — 1 operation(s) for link providers.
+- [Brellium Question Sets API](https://apis.io/apis/brellium/brellium-question-sets-api/) — The Question Sets API from Brellium — 1 operation(s) for question sets.
+- [Brellium Update Audits Flags API](https://apis.io/apis/brellium/brellium-update-audits-flags-api/) — The Update Audits Flags API from Brellium — 1 operation(s) for update audits flags.
+- [Brellium Users API](https://apis.io/apis/brellium/brellium-users-api/) — The Users API from Brellium — 2 operation(s) for users.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Brellium Webhooks](https://apis.io/asyncapis/brellium/brellium-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [brellium](https://apis.io/servers/brellium/brellium/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Brellium Agentic Access](https://apis.io/agentic-access/brellium/brellium-agentic-access/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Brellium Audits API](https://apis.io/collections/brellium/open-brellium-audits-api/)
+- [Brellium Audits Auth API](https://apis.io/collections/brellium/open-brellium-auth-api/)
+- [Brellium Audits Coding API](https://apis.io/collections/brellium/open-brellium-coding-api/)
+- [Brellium Audits Documents API](https://apis.io/collections/brellium/open-brellium-documents-api/)
+- [Brellium Audits Documents Multiple API](https://apis.io/collections/brellium/open-brellium-documents-multiple-api/)
+- [Brellium Audits Link Providers API](https://apis.io/collections/brellium/open-brellium-link-providers-api/)
+- [Brellium Audits Question Sets API](https://apis.io/collections/brellium/open-brellium-question-sets-api/)
+- [Brellium Audits Update Audits Flags API](https://apis.io/collections/brellium/open-brellium-update-audits-flags-api/)
+- [Brellium Audits Users API](https://apis.io/collections/brellium/open-brellium-users-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Brellium Overlay](https://apis.io/overlays/brellium/brellium-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Brellium Authentication](https://apis.io/security/brellium/brellium-authentication/)
+- [Brellium Domain Security](https://apis.io/security/brellium/brellium-domain-security/)
+- [Brellium Trust Center](https://apis.io/security/brellium/brellium-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.brellium.com/)
+- [Documentation](https://brellium-ai.readme.io/docs/getting-started)
+- [Getting started](https://brellium-ai.readme.io/docs/getting-started)
+- [API reference](https://brellium-ai.readme.io/reference/post_auth)
+- [Blog](https://www.brellium.com/blog)
+- [Compliance](https://www.brellium.com/security)
+- [Terms of service](https://brellium.com/terms)
+- [Privacy policy](https://brellium.com/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 41.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 50.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 39.9 |
+| Access clarity | 36.8 |
+
+**Agent readiness 24.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 23.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/brellium/](https://apis.io/providers/brellium/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Brellium: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/brellium/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
